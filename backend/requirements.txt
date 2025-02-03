@@ -1,4 +1,0 @@
-django
-python-decouple==3.8
-psycopg2-binary==2.9.6
-pillow

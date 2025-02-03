@@ -1,0 +1,10 @@
+python-logstash
+Django==4.2.6
+psycopg2-binary==2.9.6
+python-logstash==0.4.6
+Django>=4.2,<5
+channels
+daphne
+djangorestframework
+django-cors-headers
+channels_redis

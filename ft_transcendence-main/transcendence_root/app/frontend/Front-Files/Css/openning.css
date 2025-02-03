@@ -1,0 +1,138 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.bg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-image: url('../assets/images/new_backround.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(15px);
+}
+
+@font-face {
+    font-family: 'Carbo';
+    src: url('../Fonts/KGBlankSpaceSolid.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Umpty';
+    src: url('../Fonts/umpty-inside.otf') format('truetype');
+}
+
+.logo{
+    position: absolute;
+    top: 2%;
+    left: 45.7%;
+    width: 120px;
+    height: auto;
+}
+
+.centered-text h1{
+    position: absolute;
+    padding: 63px 44px;
+    font-family: 'Umpty', sans-serif;
+    font-weight: 1000;
+    font-style: normal;
+    font-size: 100px;
+    border: none;
+    margin: 0;
+    color: #060606;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    box-sizing: border-box;
+    text-align: center;
+    top: 30%;
+    left: 5%;
+    right: 5%;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+    background-color: rgba(0 0 0 / 50%);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.90);
+    border-radius: 10px;
+    letter-spacing: 0.5rem;
+
+}
+
+.button-container {
+    position: absolute;
+    bottom: 20%;
+    right:47%;
+}
+
+.button-container button {
+    font-family:  'Carbo', sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 180%;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+    text-shadow: 0 0 20px rgba(3, 63, 3, 0.9);
+    border-radius: 10px;
+}
+
+.button-container:hover{
+    box-shadow: 0 0 10px  #54ec99, 0 0 20px #54ec99, 0 0 30px #54ec99;
+    background-color: #54ec99;
+    transform: scale(1.1);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.button-Profile {
+    position: absolute;
+    top: 5%;
+    left: 17%;
+}
+
+.button-Game {
+    position: absolute;
+    top: 5%;
+    left: 30%;
+}
+
+.button-Tournoi {
+    position: absolute;
+    top: 5%;
+    right: 30%;
+}
+
+.button-Chat {
+    position: absolute;
+    top: 5%;
+    right: 20%;
+}
+
+.button-Settings {
+    position: absolute;
+    top: 5%;
+    right: 7%;
+}
+
+.button-Home {
+    position: absolute;
+    top: 5%;
+    left: 7%;
+}
+
+button {
+    font-family: monospace;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 180%;
+    text-align: center;
+    color: transparent;
+    background: white;
+    background-clip: text;
+    -webkit-background-clip: text;
+    border: none;
+}

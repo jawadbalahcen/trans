@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app/pingpong:/app  # Correct path to mount manage.py
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - logstash
+    environment:
+      - DATABASE_URL=postgres://your_db_user:your_db_password@db:5432/your_db_name
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: your_db_user
+      POSTGRES_PASSWORD: your_db_password
+      POSTGRES_DB: your_db_name
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  logstash:
+    image: logstash:7.17.13
+    volumes:
+      - ./elk/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    ports:
+      - "5044:5044"
+    depends_on:
+      - elasticsearch
+
+  elasticsearch:
+    image: elasticsearch:7.17.13
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+
+  kibana:
+    image: kibana:7.17.13
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+
+  nginx:
+    build: './nginx'
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/nginx.conf
+      - ./app/frontend/Front-Files:/usr/share/nginx/html
+    depends_on:
+      - web
+
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6380:6379"  # Expose Redis on port 6380 on your local machine  
+
+volumes:
+  postgres_data:

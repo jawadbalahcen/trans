@@ -1,0 +1,279 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.bg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-image: url('../assets/images/new_backround.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(15px);
+}
+
+#templates-area{
+    position: absolute;
+    top: 13%;
+    left: 19%;
+}
+.hidden {
+    display: none;
+}
+
+@font-face {
+    font-family: 'Carbo';
+    src: url('../Fonts/KGBlankSpaceSolid.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Umpty';
+    src: url('../Fonts/umpty-inside.otf') format('truetype');
+}
+
+.logo {
+    position: absolute;
+    top: 2%;
+    left: 46.1%;
+    width: 150px;
+    height: auto;
+}
+
+
+
+
+.menu-container {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 300px;
+}
+
+.menu1 h1 {
+    font-size: 3rem;
+    margin-bottom: 10%;
+    font-weight: bold;
+    font-family: 'Carbo', sans-serif;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+}
+
+.menu1 .btn {
+    width: 20%;
+    padding: 12% 2%;
+    margin: 1% 5%;
+    font-size: 200%;
+    text-align: center;
+    background: linear-gradient(135deg, #afffa2, #050f00);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border for consistency */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn {
+    width: 200px;
+    margin: 10px 0;
+    font-size: 1.2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #2e006a, #090424); /* Match the background */
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border for consistency */
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.menu1 .btn:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Lighter hover effect */
+    transform: scale(1.3); /* Slight scale effect on hover */
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.3);
+}
+
+.nickname-input, #roomInfo, #joinExistingRoomSection {
+    text-align: center;
+    margin-top: 20px;
+    display: block;
+}
+
+.nickname-input input, #joinExistingRoomSection input {
+    margin: 10px 0;
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent background for inputs */
+    color: white;
+    display: block; /* Ensure they are block-level elements */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+#joinExistingRoomButton {
+    width: 200px;
+    margin: 10px 0;
+    font-size: 1.2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #2e006a, #090424); /* Match the gradient background */
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border for consistency */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+    #joinExistingRoomButton:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Lighter hover effect */
+        transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+.footer-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 1rem;
+    color: #bbbbff;
+}
+
+#joinExistingRoomSection{
+    display: none; 
+}
+
+
+.button-Profile {
+    position: absolute;
+    top: 5%;
+    left: 17%;
+}
+
+.button-Tournoi {
+    position: absolute;
+    top: 5%;
+    right: 30%;
+}
+
+.button-Chat {
+    position: absolute;
+    top: 5%;
+    right: 20%;
+}
+
+.button-Settings {
+    position: absolute;
+    top: 5%;
+    right: 7%;
+}
+
+.button-Home {
+    position: absolute;
+    top: 5%;
+    left: 7%;
+}
+
+button {
+    font-family: monospace;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 180%;
+    color: #ffffff;
+    text-align: center;
+    background: none;
+    border: none;
+}
+
+
+.button-Game button {
+    position: absolute;
+    top: 5%;
+    left: 30%;
+    font-family: monospace;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 220%;
+    color: #ffffff;
+    text-align: center;
+    background: linear-gradient(135deg, #f5f5f5, #8abf82);
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.90);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+@media (max-width : 1400px){
+
+
+    .logo {
+        position: absolute;
+        top: 2%;
+        left: 45%;
+        width: 12%;
+        height: auto;
+    }
+
+    .button-Profile {
+        position: absolute;
+        top: 5%;
+        left: 17%;
+    }
+    
+    .button-Home {
+        position: absolute;
+        top: 5%;
+        left: 7%;
+    }
+    
+    .button-Tournoi {
+        position: absolute;
+        top: 5%;
+        right: 30%;
+    }
+    
+    .button-Chat {
+        position: absolute;
+        top: 5%;
+        right: 20%;
+    }
+    
+    .button-Settings {
+        position: absolute;
+        top: 5%;
+        right: 7%;
+    }
+    
+    button {
+        font-family: monospace;
+        font-weight: 100;
+        font-style: normal;
+        font-size: 170%;
+        color: #ffffff;
+        text-align: center;
+        background: none;
+        border: none;
+    }
+    
+    
+    .button-Game button {
+        position: absolute;
+        top: 5%;
+        left: 30%;
+        font-family: monospace;
+        font-weight: 100;
+        font-style: normal;
+        font-size: 210%;
+        color: #ffffff;
+        text-align: center;
+        background: linear-gradient(135deg, #f5f5f5, #8abf82);
+        text-shadow: 0 0 5px rgba(0, 255, 0, 0.90);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}

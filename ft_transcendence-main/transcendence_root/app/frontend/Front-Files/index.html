@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Background Image with Centered Text</title>
+	<link rel="stylesheet" href="./Css/Home.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="bg-container">
+	</div>
+	<div id="templates-area"></div>
+	<!-- the dynamic part in the page -->
+		<template id="openningContent">
+				<div class="centered-text">
+					<h1><div>DRAGON WORLD WHERE THE GAME IS YOURS</div></h1>
+					<div class="button-container" id="clickme">
+						<button>Click Me</button>
+					</div>
+				</div>
+			
+		</template>
+		<template id="firstContent">
+			<div class="rectangle">
+						<div class="top-header">
+							<h3>Hello, Again!</h3>
+							<small>We are happy to have you back.</small>
+						</div>
+						<form class="Info">
+							<div class="input-group">
+								<div class="input-field">
+									<input type="text" name="email" placeholder="Email" class="input-box" id="logEmail" required>
+								</div>
+								<div class="input-field">
+									<input type="password" name="password" placeholder="Password" class="input-box" id="logPassword" required>
+								</div>
+								</div>
+								<div class="remember">
+									<input type="checkbox" id="formCheck" class="check">
+									<label for="formCheck">Remember Me</label>
+								</div>
+								<div class="input-field">
+									<input type="submit" class="input-submit" value="Sign In" required>
+								</div>
+								<p>Don't have an account? <button id="showRegister">Sign Up</button></p>
+							</div>
+						</form>
+					</div>            
+			 </div>
+		</template>
+		<template id="Regester">
+			<div class="rectangle">
+				<div class="top-header">
+					<small>We are happy to have you with us.</small>
+				</div>
+				<form class="Info">
+					<div class="input-group">
+						<div class="input-field">
+							<input type="text" name="username" placeholder="Username" class="input-box" id="regUsername" required>
+						</div>
+						<div class="input-field">
+							<input type="text" name="fullname" placeholder="Full Name" class="input-box" id="regFullname" required>
+						</div>
+						<div class="input-field">
+							<input type="text" name="email" placeholder="Email" class="input-box" id="regEmail"  required>
+						</div>
+						<div class="input-field">
+							<input type="text" name="City" placeholder="City" class="input-box" id="regCity"  required>
+						</div>                   
+						<div class="input-field">
+							<input type="password" name="password" placeholder="Password" class="input-box" id="regPassword"  required>
+						</div>
+						<div class="remember">
+							<input type="checkbox" id="formCheck2" class="check">
+							<label for="formCheck2">Remember Me</label>
+						</div>
+						<div class="input-field">
+							<input type="submit" class="input-submit" value="Sign Up" required>
+						</div>
+						<p>Already have an account? <button id="showLogin">Sign In</button></p>
+					</div>
+						<div class="input-field1">
+							<button id="intra42-login-btn">Login with 42 Intra</button>
+						</div>
+				</form>
+			</div>
+		</template>
+		<template id="homeContent">
+			<!-- <div class="gif-ping"></div> -->
+			<h1> <span class="dynamic-h1"></span></h1>
+			<h2><span class="dynamic-h2"></span></h2>
+			<div class="button-container" id="start">
+				<button id="button-container1">Lets Start</button>
+			</div>
+		</template>
+		<template id="ProfileContent">
+				<div id="User-Data">
+					<div class="match1">
+						<label class="circle"><img id="profile" src="../assets/images/fouaouri.jpeg" alt="Your Image"></label>
+						<div class="userinfo">
+							<label class="Title">Full name	: <h1 id="fullName"> Fatima Ezzahra Ouaourikt</h1></label>
+
+							<label class="Title">username	: <h1 id="userName">Fouaouri</h1></label>
+								
+							<label class="Title">Mail		: <h1 id="Mail">fzouaourikt@gmail.com</h1></label>
+								
+							<label class="Title">Avatar		: <h1 id="Avatar">Toothless</h1></label>
+
+							<label class="Title">Achievement	: <h1 id="Achievement">Gold</h1></label>
+
+							<label class="Title">City		: <h1 id="City">Benguerir</h1></label>
+						</div>
+					</div>
+				</div>
+				<div class="addfriend"id="Add-Friend">
+					<label class="Discreption"><h1 id="Discreption">Hi, I'm Toothless, a sleek black Night Fury with striking green eyes and incredible speed. Known for my powerful plasma blasts and unbreakable bond with my rider, Hiccup, I'm the ultimate flying companion and defender of Berk.</h1></label>
+
+					<button class="follow" id="follow">+ Follow</button>
+				</div>
+				<div class="History" id="HistoryList">
+					<div class="h3background">
+						<h3>History</h3>
+					</div>
+					<div class="history-container" id="HistoryContainer">
+						<div class="match">
+							<label class="mycircle"><img id="profile" src="../assets/images/fouaouri.jpeg" alt="Your Image"></label>
+							<p id="myscore">5</p>
+							<label class="vscircle"><img src="../assets/images/vs.png" id="profile" alt="Your Image"></label>
+							<p id="otherscore">7</p>
+							<label class="othercircle"><img id="otherprofile" src="../assets/images/fouaouri.jpeg" alt="otherImage"></label>
+						</div>
+						<div class="match">
+							<label class="mycircle"><img id="profile" src="../assets/images/fouaouri.jpeg" alt="Your Image"></label>
+							<p id="myscore">5</p>
+							<label class="vscircle"><img src="../assets/images/vs.png" id="profile" alt="Your Image"></label>
+							<p id="otherscore">1</p>
+							<label class="othercircle"><img id="otherprofile" src="../assets/images/fouaouri.jpeg" alt="otherImage"></label>
+						</div>
+						<div class="match">
+							<label class="mycircle"><img id="profile" src="../assets/images/fouaouri.jpeg" alt="Your Image"></label>
+							<p id="myscore">2</p>
+							<label class="vscircle"><img src="../assets/images/vs.png" id="profile" alt="Your Image"></label>
+							<p id="otherscore">7</p>
+							<label class="othercircle"><img id="otherprofile" src="../assets/images/fouaouri.jpeg" alt="otherImage"></label>
+						</div>
+						<div class="match">
+							<label class="mycircle"><img id="profile" src="../assets/images/fouaouri.jpeg" alt="Your Image"></label>
+							<p id="myscore">1</p>
+							<label class="vscircle"><img src="../assets/images/vs.png" id="profile" alt="Your Image"></label>
+							<p id="otherscore">0</p>
+							<label class="othercircle"><img id="otherprofile" src="../assets/images/fouaouri.jpeg" alt="otherImage"></label>
+						</div>
+					</div>	
+				</div>
+				<div class="friends-list" id="friendsList">
+					<div class="h3background">
+						<h3>Friends-list</h3>
+					</div>
+					<div class="friends-container" id="friendsContainer">
+						<div class="match">
+							<label class="mycircle"><img id="profile" src="../assets/images/fouaouri.jpeg" alt="Your Image"></label>
+							<p id="username">username</p>
+							<button class="follow" id="follow">+ Follow</button>
+						</div>
+						<div class="match">
+							<label class="mycircle"><img id="profile" src="../assets/images/fouaouri.jpeg" alt="Your Image"></label>
+							<p id="username">username1</p>
+							<button class="follow" id="follow">+ Follow</button>
+						</div>
+						<div class="match">
+							<label class="mycircle"><img id="profile" src="../assets/images/fouaouri.jpeg" alt="Your Image"></label>
+							<p id="username">username2</p>
+							<button class="follow" id="follow">+ Follow</button>
+						</div>
+						<div class="match">
+							<label class="mycircle"><img id="profile" src="../assets/images/fouaouri.jpeg" alt="Your Image"></label>
+							<p id="username">username3</p>
+							<button class="follow" id="follow">+ Follow</button>
+						</div>
+					</div>
+				</div>
+				<div class="Achievement">
+					<div class="match">
+						<label class="icon"><img id="icon" src="../assets/images/Bronze.png" alt="Bronze"></label>
+						<label class="process"><img id="Bronzeprocess" src="../assets/images/0process.png" alt="Bronze"></label>
+					</div>
+					<div class="match">
+						<label class="icon"><img id="icon" src="../assets/images/Silver.png" alt="Silver"></label>
+						<label class="process"><img id="Silverprocess" src="../assets/images/0process.png" alt="Silver"></label>
+					</div>
+					<div class="match">
+						<label class="icon"><img id="icon" src="../assets/images/Gold.png" alt="Gold"></label>
+						<label class="process"><img id="Goldprocess" src="../assets/images/0process.png" alt="Gold"></label>
+					</div>
+					<div class="match">
+						<label class="icon"><img id="icon" src="../assets/images/Platinium.png" alt="Platinium"></label>
+						<label class="process"><img id="Platiniumprocess" src="../assets/images/0process.png" alt="Platinium"></label>
+					</div>
+					<div class="match">
+						<label class="icon"><img id="icon" src="../assets/images/Diamond.png" alt="Diamond"></label>
+						<label class="process"><img id="Diamondprocess" src="../assets/images/0process.png" alt="Diamond"></label>
+					</div>
+				</div>
+				<script src="../JS/Profile.js" defer></script>
+		</template>
+
+
+		<template id="ChatContent">
+
+			<div class="container">
+
+			<!-- select user and search box -->
+
+				<div class="col-md-4 border-right user-list" id="user-list-container">
+					<div class="search-box">
+						<div class="input-wrapper">
+							<img src="../assets/images/search.png"  alt="icon" class="material-icons">
+							<input id="search-input" placeholder="Search ..." aria-label="Search users">
+						</div>
+					</div>
+					<ul id="user-list" class="list-group">
+						<!-- User items will be populated dynamically by JavaScript -->
+
+					</ul>
+				</div>
+			<!-- Chat content and message input -->
+
+				<!-- before shoosing a user to start chat -->
+				<section class="col-md-8 profile-panel" id="profile-container">
+					<div class="message-container">
+						<img class="Chat-icon" src="../assets/images/Chat-icon.png" alt="Chat-icon">
+						<p>Start a chat ....</p>
+					</div>
+				</section>
+
+				<!-- Chat room is active -->
+
+				<section class="col-md-8 chat-panel d-none" id="chat-container">
+					<!-- the header  -->
+					<div class="header">
+						<div class="friend-drawer">
+							<img id="profile-image" alt="profile">
+
+							<div class="user-name">
+								<p id="other-username">other-username</p>
+							</div>
+						</div>
+					</div>
+					<!-- render messages between two users -->
+					<div id="chat-box" class="chat-messages">
+						<!-- Chat messages will be dynamically loaded here -->
+					</div>
+					<!-- send message box section -->
+					<div class="chat-box-tray">
+						<input type="text" id="chat-input" name="sended-message" placeholder="Type your message here...">
+						<button id="send-button" class="btn btn-dark">
+							<i class="material-icons">send</i>
+						</button>
+					</div>
+				</section>
+				
+			</div>
+			<link rel="stylesheet" href="../Css/Chat.css" defer>
+			<link rel="stylesheet" href="../Css/bootstrap.css">
+			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			<script src="../JS/jquery-3.7.1.slim.min.js" ></script>
+			<script src="../JS/popper.min.js" defer></script>
+			<script src="../JS/bootstrap.js" defer></script>
+			<script src="../JS/Chat.js" defer></script>
+
+		</template>
+
+
+
+		<template id="gameContent">
+				<div class="circle">
+					<img src="../assets/images/neonpingpong.jpg" alt="Your Image">
+				</div>
+				<div class="rectang">
+					<h1>Welcome to our Ping Pong <br>Game: master your skills, <br>compete with friends, and <br>rise to the top!</h1>
+			
+					<div class="game-h2">
+						<h2>Experience the thrill of fast-paced table tennis with our Ping Pong Game, <br>featuring realistic physics, various game modes, and competitive <br>multiplayer action.</h2>
+					</div>
+			
+					<div class="tournoi">
+						<h2>For a fun and exhilarating experience, try our tournament mode. <br>Challenge your friends and see who comes out on top in the <br>ultimate ping pong showdown!</h2>
+					</div>
+			
+					<div class="button-container" id="start">
+						<button>Let's Start</button>
+					</div>
+					<div class="button-tournoi" id="to_tournoi">
+						<button>Let's Try</button>
+					</div>
+				</div>
+		</template>
+
+		<template id="tournoiContent">
+			<div class="circle">
+				<img src="../assets/images/ranking.png" alt="Your Image">
+			</div>
+			<div class="rectang">
+				<h1>Join our tournament for a <br>thrilling ping pong <br>showdown and prove <br>you're the best!</h1>
+
+				<h2>Enter our ping pong tournament for an exciting challenge where you can <br>compete against top players, improve your skills, and earn bragging rights <br>as the ultimate champion.</h2>
+
+				<div class="button-container">
+					<button>Join</button>
+				</div>
+
+			</div>
+		</template>
+	
+		<template id="settingContent">
+			<div class="rectangle">
+				<div class="circle">
+					<img id="profile" alt="Your Image">
+				</div>
+				<div class="Edit" id="Edit">
+					<button>Edit</button>
+				</div>
+				<div class="Logout" id="Logout">
+					<button>Logout</button>
+				</div>
+				<div class="Delete" id="Delete">
+					<button>Delete</button>
+				</div>
+				<div class="Infos">
+					<fieldset>
+						<label class="Title">Full name : <h1 id="fullName"></h1></label>
+							
+						<label class="Title">Username : <h1 id="userName"></h1></label>
+							
+						<label class="Title">Mail : <h1 id="Mail"></h1></label>
+							
+						<label class="Title">Avatar : <h1 id="Avatar"></h1></label>
+							
+						<label class="Title">City : <h1 id="City"></h1></label>
+							
+					</fieldset>
+					<!-- <h2>Bio</h2>
+						<h1>Hi, I'm Toothless, a sleek black Night Fury with striking green eyes and incredible speed. <br>Known for my powerful plasma blasts and unbreakable bond with my rider, Hiccup, <br>I'm the ultimate flying companion and defender of Berk.</h1> -->
+				</div>    
+			</div>
+		</template>
+
+		<template id="EditContent">
+			<div class="rectangle">
+				<div class="circle">
+					<img src="" alt="Your Image">
+				</div>
+				<form class="Infos" >
+					<input name="image_link" placeholder="Profile Image" type="file" id="profile-update"/>
+					<input name="fullname" type="text" placeholder="Full Name" class="f_name" />
+					<input name="username" type="text" placeholder="Username" class="f_name" />
+					<input name="City" type="text" placeholder="City" class="f_name" />
+					<input name="email" type="email" placeholder="email" class="f_name" />
+					<div class="Done" id="Done"><button type="submit">Update</button></div>
+				</form>
+			</div>
+		</template>
+
+		<template id="ChooseGame">
+			<!-- Main Menu -->
+			<div class="menu-container">
+				<div class="menu text-center" id="menu">
+					<h1>Ping Pong Game</h1>
+					<button id="playLocal" class="btn btn-primary">Play Local</button>
+					<button id="playOnline" class="btn btn-primary">Play Online</button>
+				</div>
+			
+				<!-- Nickname Input for Local Game -->
+				<div class="nickname-input" id="nicknameInput" style="display: none;">
+					<h2>Enter Player Nicknames</h2>
+					<input type="text" id="player1Name" class="form-control" placeholder="Player 1 Nickname">
+					<input type="text" id="player2Name" class="form-control" placeholder="Player 2 Nickname">
+					<button id="startLocalGame" class="btn btn-success">Start Game</button>
+				</div>
+			
+				<!-- Room URL Display -->
+				<div id="roomInfo" style="display: none; text-align: center;">
+					<h3>Room Created!</h3>
+					<p id="roomUrl"></p>
+					<button id="joinRoom" class="btn btn-success">Join Room</button>
+				</div>
+			
+				<!-- Join Existing Room -->
+				<div id="joinExistingRoomSection" class="mt-4">
+					<button id="inviteFriend" class="btn btn-primary">Invite a Friend</button>
+					<h3>Join an Existing Room</h3>
+					<input type="text" id="existingRoomUrl" class="form-control" placeholder="Enter Room URL">
+					<button id="joinExistingRoomButton" class="btn btn-warning mt-2">Join Existing Room</button>
+				</div>
+			
+				<!-- Local Game Canvas -->
+				<canvas id="localGameCanvas" width="600" height="400"></canvas>
+			
+				<!-- Online Game Canvas -->
+				<canvas id="onlineGameCanvas" width="600" height="400"></canvas>
+			<script src="../JS/PingPong.js"></script>
+		</template>
+
+		<template id="ChooseAi">
+			<h1> YOU WOULD LIKE TO CHOOSE </h1>
+			<div class="play-AI">
+				<img src="../assets/images/ai.png" alt="image">
+					<div class="AI-button">
+						<button id="playAI">PLAYER VS AI</button>
+					</div>
+			</div>
+			<div class="Player-player">
+				<img src="../assets/images/pingpong1.png" alt="image">
+				<div class="player-button">
+					<button id="player-player">PLAYER VS PLAYER</button>
+				</div>
+				
+			</div>
+		</template>
+
+		<template id="mobile">
+			<div class="bg-container"></div>
+			<div class="dragon-gif"></div>
+			<div class="Welcome">
+				<h1>This website does not support the mobile format.</h1>
+				<div class="button-container">
+					<button id="back-home">Back to Home</button>
+				</div>
+			</div>
+		</template>
+
+		<!-- <template id="Avatar1">
+			<div class="circle">
+				<img src="../assets/images/Toothless.png" alt="Your Image">
+			</div>
+			<div class="rectang">
+				<h1>TOOTHLESS</h1>
+				<h2>Toothless, the beloved dragon from the "How to <br>Train Your Dragon" series, is a sleek, black Night <br>Fury with striking green eyes and a playful, <br>intelligent personality. Known for his incredible <br>speed, agility, and powerful plasma blasts, Toothless <br>forms an unbreakable bond with his rider, Hiccup.<br>Together, they embark on thrilling adventures, <br>showcasing the true meaning of friendship and <br>bravery.</h2>
+				<div class="button-container">
+					<button>Choose</button>
+				</div>
+				<div id="rectang-8"></div>
+				<div class="switch_right" id="r_click"><img src="../assets/images/r_switch.png" alt="right Image"></div>
+				<div class="switch_left" id="l_click"><img src="../assets/images/l_switch.png" alt="left Image"></div>  
+			</div>
+		</template>
+		<template id="Avatar2">
+			<div class="circle">
+				<img src="../assets/images/ferry.png" alt="Your Image">
+			</div>
+			<div class="rectang">
+				<h1>Light Fury</h1>
+		
+				<h2>The Light Fury, introduced in the "How to Train <br>Your Dragon" series, is a stunning, white dragon <br>with iridescent scales and piercing blue eyes. <br>Graceful and elusive, she possesses the unique <br>ability to cloak herself in a plasma-charged dive. <br>Her bond with Toothless and her fierce <br>independence highlight her strength and beauty, <br>making her a captivating and formidable character.</h2>
+		
+				<div class="button-container">
+					<button>Choose</button>
+				</div>
+				<div id="rectang-8"></div>
+				<div class="switch_right" id="r_click"><img src="../assets/images/r_switch.png" alt="right Image"></div>
+				<div class="switch_left" id="l_click"><img src="../assets/images/l_switch.png" alt="left Image"></div>
+		
+			</div>
+		</template>
+		<template id="Avatar3">
+			<div class="circle">
+				<img src="../assets/images/Gronckle.png" alt="Your Image">
+			</div>
+			<div class="rectang">
+				<h1>Gronckle</h1>
+		
+				<h2>The Gronckle, a beloved dragon species from the <br>"How to Train Your Dragon" series, is known for its <br>stout, chunky body and tough, rock-like skin. Despite <br>its slow and lumbering appearance, the Gronckle can <br>fly with surprising agility and spit molten lava blasts. <br>With a lovable and loyal temperament, Gronckles, <br>like Fishlegs' dragon, Meatlug, prove that even the <br>most unconventional creatures can be powerful <br>allies and affectionate companions.</h2>
+		
+				<div class="button-container">
+					<button>Choose</button>
+				</div>
+				<div id="rectang-8"></div>
+				<div class="switch_right" id="r_click"><img src="../assets/images/r_switch.png" alt="right Image"></div>
+				<div class="switch_left" id="l_click"><img src="../assets/images/l_switch.png" alt="left Image"></div>
+		
+			</div>
+		</template>
+		<template id="Avatar4">
+			<div class="circle">
+				<img src="../assets/images/barf.webp" alt="Your Image">
+			</div>
+			<div class="rectang">
+				<h1>Barf and Belch</h1>
+		
+				<h2>Barf and Belch, Ruffnut's dragon in the "How to Train <br>Your Dragon" series, is a unique two-headed <br>Zippleback with a mischievous personality. Each head, <br>one named Barf and the other Belch, has its own <br>distinct traits, but they work together to breathe <br>explosive gas and ignite it for powerful blasts. Their <br>quirky dynamic mirrors Ruffnut's spirited nature, <br>creating a perfect, if chaotic, partnership.</h2>
+		
+				<div class="button-container">
+					<button>Choose</button>
+				</div>
+				<div id="rectang-8"></div>
+				<div class="switch_right" id="r_click"><img src="../assets/images/r_switch.png" alt="right Image"></div>
+				<div class="switch_left" id="l_click"><img src="../assets/images/l_switch.png" alt="left Image"></div>
+		
+			</div>
+		</template>
+		<template id="Avatar5">
+			<div class="circle">
+				<img src="../assets/images/Stormfly.webp" alt="Your Image">
+			</div>
+			<div class="rectang">
+				<h1>STORMFLY</h1>
+		
+				<h2>Stormfly, Astrid's dragon in the "How to Train Your <br>Dragon" series, is a magnificent Deadly Nadder known <br>for her vibrant blue and yellow scales and sharp tail <br>spines. Agile and fiercely loyal, Stormfly can launch <br>her spines with pinpoint accuracy and breathe intense <br>magnesium-rich flames. Her strong bond with Astrid <br>and her impressive combat skills make her a <br>formidable and beloved member of the dragon riders' <br>team.</h2>
+		
+				<div class="button-container">
+					<button>Choose</button>
+				</div>
+				<div id="rectang-8"></div>
+				<div class="switch_right" id="r_click"><img src="../assets/images/r_switch.png" alt="right Image"></div>
+				<div class="switch_left" id="l_click"><img src="../assets/images/l_switch.png" alt="left Image"></div>
+		
+			</div>
+		</template>
+		<template id="Avatar6">
+			<div class="circle">
+				<img src="../assets/images/thun.png" alt="Your Image">
+			</div>
+			<div class="rectang">
+				<h1>thunderdrum</h1>
+		
+				<h2>The Thunderdrum, a formidable dragon species from <br>the "How to Train Your Dragon" series, is known for its <br>massive, stocky body and wide, powerful jaws. It can <br>produce a thunderous sonic blast capable of capsizing <br>ships and stunning foes. Despite its intimidating <br>appearance and fearsome abilities, Thunderdrums, <br>like Stoick's dragon Thornado, can be incredibly loyal <br>and protective, showcasing both their strength and <br>their deep bond with their riders.</h2>
+		
+				<div class="button-container">
+					<button>Choose</button>
+				</div>
+				<div id="rectang-8"></div>
+				<div class="switch_right" id="r_click"><img src="../assets/images/r_switch.png" alt="right Image"></div>
+				<div class="switch_left" id="l_click"><img src="../assets/images/l_switch.png" alt="left Image"></div>
+		
+			</div>
+		</template>
+		<template id="Avatar7">
+			<div class="circle">
+				<img src="../assets/images/hookfang.png" alt="Your Image">
+			</div>
+			<div class="rectang">
+				<h1>HOOKFANG</h1>
+		
+				<h2>Hookfang, Snotlout's dragon in the "How to Train Your <br>Dragon" series, is a fierce and fiery Monstrous <br>Nightmare with vibrant red scales and a long, <br>serpentine body. Known for his ability to set himself <br>ablaze, Hookfang uses his fire-coated body as a <br>powerful weapon in battles. His rebellious and <br>headstrong personality complements Snotlout's bold <br>nature, making them a dynamic and formidable duo.</h2>
+		
+				<div class="button-container">
+					<button>Choose</button>
+				</div>
+				<div id="rectang-8"></div>
+				<div class="switch_right" id="r_click"><img src="../assets/images/r_switch.png" alt="right Image"></div>
+				<div class="switch_left" id="l_click"><img src="../assets/images/l_switch.png" alt="left Image"></div>
+		
+			</div>
+		
+		</template>
+		<template id="Avatar8">
+			<div class="circle">
+				<img src="../assets/images/skrill.png" alt="Your Image">
+			</div>
+			<div class="rectang">
+				<h1>SKRILL</h1>
+		
+				<h2>The Skrill, a fearsome dragon species from the "How <br>to Train Your Dragon" series, is known for its sleek, <br>dark body and electrifying abilities. This elusive <br>dragon can harness and shoot bolts of lightning, <br>making it one of the most dangerous and powerful <br>dragons. With its sharp spines and agile flight, the <br>Skrill is both a formidable adversary and a fascinating <br>creature, embodying the raw, untamed power of <br>nature.</h2>
+		
+				<div class="button-container">
+					<button>Choose</button>
+				</div>
+				<div id="rectang-8"></div>
+				<div class="switch_right" id="r_click"><img src="../assets/images/r_switch.png" alt="right Image"></div>
+				<div class="switch_left" id="l_click"><img src="../assets/images/l_switch.png" alt="left Image"></div>
+			</div>
+		</template> -->
+		<!-- the fix part in the page -->
+		<div class="Welcome">
+			<img src="./assets/images/logo.png" alt="Logo" class="logo"> 
+			<div class="button-Home" id="home">
+				<button>Home</button>
+			</div>
+			<div class="button-Profile" id="profile">
+				<button>Profile</button>
+			</div>
+			<div class="button-Game" id="game">
+				<button>Game</button>
+			</div>
+			<div class="button-Tournoi" id="tournoi">
+				<button>Tournoi</button>
+			</div>
+			<div class="button-Chat" id="Chat">
+				<button>Chat</button>
+			</div>
+			<div class="button-Settings" id="settings">
+				<button>Settings</button>
+			</div>
+		</div>
+	<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+	<script src="./JS/front.js" defer></script>
+</body>
+</html>
+
+<!-- name     	:  Fatima
+username    :  Fouaouri -->
