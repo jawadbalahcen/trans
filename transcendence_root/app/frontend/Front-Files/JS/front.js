@@ -45,8 +45,8 @@ function navigateTo(content, cssFile, path) {
     
     if(cssFile === '../Css/Chat.css')
         loadCssFile('../Css/Chat.css', '../Css/bootstrap.css', "https://fonts.googleapis.com/icon?family=Material+Icons");
-    // else if(cssFile === '../Css/ChooseGame.css')
-    //     loadCssFile('../Css/ChooseGame.css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css')
+    else if(cssFile === '../Css/ChooseGame.css')
+        loadCssFile('../Css/ChooseGame.css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css')
     else
         loadCssFile(cssFile);
     LoadContent(content);
@@ -122,9 +122,9 @@ function EditContent(){
         event.preventDefault();
         
         const dataForm = new FormData(info);
-        // for (let [key, value] of dataForm.entries()) {
-            //     console.log(`${key}: ${value}`);
-            // }
+        for (let [key, value] of dataForm.entries()) {
+                console.log(`${key}: ${value}`);
+            }
         const imageInput = document.getElementById('profile-update');
         const file = imageInput.files[0]; // Get the selected file
             
@@ -132,7 +132,7 @@ function EditContent(){
         if (file)
             dataForm.append('image_link', file);
         console.log(10000);
-        // console.log(dataForm.get('City'));
+        console.log(dataForm.get('City'));
         console.log( "image ::::" + dataForm.get('image_link'));
         const data = new URLSearchParams(dataForm);
         fetch('http://localhost:8000/api/update_user/', {
@@ -148,43 +148,43 @@ function EditContent(){
           .catch(error => console.log(error));
     });
 
-    // document.getElementById('Avatar').addEventListener('click', (e) => {
-    //     e.preventDefault();
-    //     LoadContent('Avatar1');
-    //     navigateTo('Avatar1', '../Css/avatar1.css',  '/Avatar1');
+    document.getElementById('Avatar').addEventListener('click', (e) => {
+        e.preventDefault();
+        LoadContent('Avatar1');
+        navigateTo('Avatar1', '../Css/avatar1.css',  '/Avatar1');
 
-    // });
+    });
     
 }
 
 
-// function ProfileContent(){
-//     fetch('http://localhost:8000/api/user/', {
-//         method: 'GET',
-//         credentials: 'include',
-//     })
-//     .then(response => {
-//         if (!response.ok) {
-//             throw new Error("Network response was not ok");
-//         }
-//         return response.json();
-//     })
-//     .then(data => {
-//         console.log(data.image_link);
-//         const profileImg = document.getElementById('profile');
-//         profileImg.src = data.image_link;
-//         document.getElementById("fullName").textContent = data.full_name || "N/A";
-//         document.getElementById("userName").textContent = data.username || "N/A";
-//         document.getElementById("Mail").textContent = data.email || "N/A";
-//         document.getElementById("Avatar").textContent = data.avatar || "N/A";
-//         document.getElementById("City").textContent = data.city || "N/A";
-//     })
-//     .catch(error => {
-//         console.error("There was a problem fetching the data:", error);
-//     });
+function ProfileContent(){
+    fetch('http://localhost:8000/api/user/', {
+        method: 'GET',
+        credentials: 'include',
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data.image_link);
+        const profileImg = document.getElementById('profile');
+        profileImg.src = data.image_link;
+        document.getElementById("fullName").textContent = data.full_name || "N/A";
+        document.getElementById("userName").textContent = data.username || "N/A";
+        document.getElementById("Mail").textContent = data.email || "N/A";
+        document.getElementById("Avatar").textContent = data.avatar || "N/A";
+        document.getElementById("City").textContent = data.city || "N/A";
+    })
+    .catch(error => {
+        console.error("There was a problem fetching the data:", error);
+    });
 
-//     startScrooling();
-// }
+    startScrooling();
+}
 
 
 function LoadContent(templateId){
@@ -224,7 +224,7 @@ function LoadContent(templateId){
             console.log(dataForm.get('fullname'));
             const data = new URLSearchParams(dataForm);
             //URL should be replaced by the correct URL 
-            fetch('http://localhost:8000/api/update_user/', {
+            fetch('http://localhost:8001/register/', {
                 method : 'POST',
                 credentials: 'include',
                 headers: {
@@ -260,7 +260,7 @@ function LoadContent(templateId){
             console.log(dataForm.get('password'));
             const data = new URLSearchParams(dataForm);
             //URL should be replaced by the correct URL 
-            fetch('http://localhost:8000/api/update_user/', {
+            fetch('http://localhost:8001/register/', {
                 method : 'POST',
                 credentials: 'include',
                 headers: {
@@ -323,69 +323,69 @@ function checkWindowSize() {
 window.addEventListener('resize', checkWindowSize);
 
 
-// function checkUserLoginFromBackend() {
-//     fetch('http://localhost:8000/api/check-authentication/', {
-//         method: 'GET',
-//         credentials: 'include',
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         if (data.isLoggedIn) {
-//             console.log("User is authenticated!");
-//             const path = window.location.pathname;
-//             if(path)
-//                 handleRouting(path);
-//             else
-//                 navigateTo('homeContent', '../Css/Home.css',  '/Home');
-//             document.getElementById('home').addEventListener('click', (e) => {
-//                 e.preventDefault();
-//                 navigateTo('homeContent', '../Css/Home.css',  '/Home');
-//             });
-//             document.getElementById('profile').addEventListener('click', (e) => {
-//                 console.log("profiiiiiile");
-//                 e.preventDefault();
-//                 navigateTo('ProfileContent', '../Css/Profile.css',  '/Profile');
-//             });
-//             document.getElementById('game').addEventListener('click', (e) => {
-//                 e.preventDefault();
-//                 navigateTo('gameContent', '../Css/Game.css',  '/Game');
+function checkUserLoginFromBackend() {
+    fetch('http://localhost:8001/auth-check/', {
+        method: 'GET',
+        credentials: 'include',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.isLoggedIn) {
+            console.log("User is authenticated!");
+            const path = window.location.pathname;
+            if(path)
+                handleRouting(path);
+            else
+                navigateTo('homeContent', '../Css/Home.css',  '/Home');
+            document.getElementById('home').addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateTo('homeContent', '../Css/Home.css',  '/Home');
+            });
+            document.getElementById('profile').addEventListener('click', (e) => {
+                console.log("profiiiiiile");
+                e.preventDefault();
+                navigateTo('ProfileContent', '../Css/Profile.css',  '/Profile');
+            });
+            document.getElementById('game').addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateTo('gameContent', '../Css/Game.css',  '/Game');
     
-//             });
-//             document.getElementById('tournoi').addEventListener('click', (e) => {
-//                 e.preventDefault();
-//                 navigateTo('tournoiContent', '../Css/Tournoi.css',  '/Tournoi');
+            });
+            document.getElementById('tournoi').addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateTo('tournoiContent', '../Css/Tournoi.css',  '/Tournoi');
     
-//             });
-//             document.getElementById('settings').addEventListener('click', (e) => {
-//                 e.preventDefault();
-//                 navigateTo('settingContent', '../Css/Setting.css',  '/Settings');
-//             });
-//             document.getElementById('Chat').addEventListener('click', (e) => {
-//                 e.preventDefault();
-//                 navigateTo('ChatContent', '../Css/Chat.css', '/Chat');
-//             });
-//         } 
-//         else {
-//             console.log(data.isLoggedIn);
-//             console.log("User is not authenticated");
-//             navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
-//         }
-//     })
-//     .catch(error => {
-//         console.error('Error checking login status:', error);
-//         navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
-//     });
-// }
+            });
+            document.getElementById('settings').addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateTo('settingContent', '../Css/Setting.css',  '/Settings');
+            });
+            document.getElementById('Chat').addEventListener('click', (e) => {
+                e.preventDefault();
+                navigateTo('ChatContent', '../Css/Chat.css', '/Chat');
+            });
+        } 
+        else {
+            console.log(data.isLoggedIn);
+            console.log("User is not authenticated");
+            navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
+        }
+    })
+    .catch(error => {
+        console.error('Error checking login status:', error);
+        navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
+    });
+}
 
 function checkUserLoginFromBackend() {
-    // fetch('http://localhost:8000/api/check-authentication/', {
-    //     method: 'GET',
-    //     credentials: 'include',
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-            // navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
-        // if (data.isLoggedIn) {
+    fetch('http://localhost:8001/auth-check/', {
+        method: 'GET',
+        credentials: 'include',
+    })
+    .then(response => response.json())
+    .then(data => {
+            navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
+        if (data.isLoggedIn) {
             console.log("User is authenticated!");
             const path = window.location.pathname;
             if(path)
@@ -419,17 +419,17 @@ function checkUserLoginFromBackend() {
                 e.preventDefault();
                 navigateTo('ChatContent', '../Css/Chat.css', '/Chat');
             });
-        // } 
-        // else {
-        //     console.log(data.isLoggedIn);
-        //     console.log("User is not authenticated");
-        //     navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
-        // }
-    // })
-    // .catch(error => {
-    //     console.error('Error checking login status:', error);
-    //     navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
-    // });
+        } 
+        else {
+            console.log(data.isLoggedIn);
+            console.log("User is not authenticated");
+            navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
+        }
+    })
+    .catch(error => {
+        console.error('Error checking login status:', error);
+        navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
