@@ -85,7 +85,7 @@ function GameContent(){
 }
 
 function SettingContent(){
-    fetch('http://localhost:8000/api/user/', {
+    fetch('http://127.0.0.1:8001/api/update_user/', {
         method: 'GET',
         credentials: 'include',
     })
@@ -135,7 +135,7 @@ function EditContent(){
         console.log(dataForm.get('City'));
         console.log( "image ::::" + dataForm.get('image_link'));
         const data = new URLSearchParams(dataForm);
-        fetch('http://localhost:8000/api/update_user/', {
+        fetch('http://127.0.0.1:8001/api/update_user/', {
             method : 'POST',
             credentials: 'include',
             headers: {
@@ -159,7 +159,7 @@ function EditContent(){
 
 
 function ProfileContent(){
-    fetch('http://localhost:8000/api/user/', {
+    fetch('http://127.0.0.1:8001/api/user/', {
         method: 'GET',
         credentials: 'include',
     })
@@ -224,7 +224,7 @@ function LoadContent(templateId){
             console.log(dataForm.get('fullname'));
             const data = new URLSearchParams(dataForm);
             //URL should be replaced by the correct URL 
-            fetch('http://localhost:8001/register/', {
+            fetch('http://127.0.0.1:8001/api/register/', {
                 method : 'POST',
                 credentials: 'include',
                 headers: {
@@ -260,7 +260,7 @@ function LoadContent(templateId){
             console.log(dataForm.get('password'));
             const data = new URLSearchParams(dataForm);
             //URL should be replaced by the correct URL 
-            fetch('http://localhost:8001/register/', {
+            fetch('http://127.0.0.1:8001/api/login/', {
                 method : 'POST',
                 credentials: 'include',
                 headers: {
@@ -324,7 +324,7 @@ window.addEventListener('resize', checkWindowSize);
 
 
 function checkUserLoginFromBackend() {
-    fetch('http://localhost:8001/auth-check/', {
+    fetch('http://127.0.0.1:8001/auth-check/', {
         method: 'GET',
         credentials: 'include',
     })
@@ -378,7 +378,7 @@ function checkUserLoginFromBackend() {
 }
 
 function checkUserLoginFromBackend() {
-    fetch('http://localhost:8001/auth-check/', {
+    fetch('http://127.0.0.1:8001/auth-check/', {
         method: 'GET',
         credentials: 'include',
     })

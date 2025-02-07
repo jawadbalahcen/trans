@@ -1,5 +1,5 @@
 
-fetch('http://localhost:8000/api/user/', {
+fetch('http://127.0.0.1:8001/api/user/', {
         method: 'GET',
         credentials: 'include',
     })
