@@ -29,17 +29,16 @@ def register_user(request):
         full_name=data.get('full_name', ''),
         city=data.get('city', '')
     )
-    
     # Auto-login after registration
     login(request, user)
     return Response({'message': 'Registration successful'}, status=201)
 
 @api_view(['POST'])
 def user_login(request):
-    username = request.data.get('username')
+    email = request.data.get('email')
     password = request.data.get('password')
     
-    user = authenticate(request, username=username, password=password)
+    user = authenticate(request, email=email, password=password)
     if user is not None:
         login(request, user)
         return Response({'message': 'Login successful'})
@@ -84,7 +83,7 @@ class CSRFTokenView(APIView):
 # @csrf_exempt  # Remove or replace this decorator in production
 # def register(request):
 #     if request.method == 'POST':
-#         if request.content_type == 'application/json':
+#         if request.content_type == 'application/x-www-form-urlencoded':
 #             try:
 #                 data = json.loads(request.body)
 #             except json.JSONDecodeError:

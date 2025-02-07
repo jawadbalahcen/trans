@@ -22,7 +22,7 @@
 #             'password2': 'ComplexPassword123!',
 #             'display_name': 'NewUser'
 #         }
-#         response = self.client.post(reverse('register'), json.dumps(data), content_type='application/json')
+#         response = self.client.post(reverse('register'), json.dumps(data), content_type='application/x-www-form-urlencoded')
 #         self.assertEqual(response.status_code, 200)
 #         self.assertTrue(User.objects.filter(username='newuser').exists())
 
@@ -34,14 +34,14 @@
 #             'password2': 'Testpass123!',
 #             'display_name': 'DuplicateUser'
 #         }
-#         response = self.client.post(reverse('register'), json.dumps(data), content_type='application/json')
+#         response = self.client.post(reverse('register'), json.dumps(data), content_type='application/x-www-form-urlencoded')
 #         self.assertEqual(response.status_code, 400)
 #         self.assertIn('username', response.json()['errors'])
 
 #     # Login/Logout Tests
 #     def test_login_success(self):
 #         data = {'username': 'testuser', 'password': 'Testpass123!'}
-#         response = self.client.post(reverse('user_login'), json.dumps(data), content_type='application/json')
+#         response = self.client.post(reverse('user_login'), json.dumps(data), content_type='application/x-www-form-urlencoded')
 #         self.assertEqual(response.status_code, 200)
 #         self.profile.refresh_from_db()
 #         self.assertTrue(self.profile.online)
@@ -151,12 +151,12 @@ class AuthTests(TestCase):
         }
         
         # Test valid registration
-        response = self.client.post(url, json.dumps(data), content_type='application/json')
+        response = self.client.post(url, json.dumps(data), content_type='application/x-www-form-urlencoded')
         self.assertEqual(response.status_code, 200)
         self.assertIn('status', response.json())
 
         # Test duplicate username
-        response = self.client.post(url, json.dumps(data), content_type='application/json')
+        response = self.client.post(url, json.dumps(data), content_type='application/x-www-form-urlencoded')
         self.assertEqual(response.status_code, 400)
 
     def test_login(self):
@@ -170,10 +170,10 @@ class AuthTests(TestCase):
         }
         
         # Test valid login
-        response = self.client.post(url, json.dumps(data), content_type='application/json')
+        response = self.client.post(url, json.dumps(data), content_type='application/x-www-form-urlencoded')
         self.assertEqual(response.status_code, 200)
         
         # Test invalid credentials
         data['password'] = 'wrongpassword'
-        response = self.client.post(url, json.dumps(data), content_type='application/json')
+        response = self.client.post(url, json.dumps(data), content_type='application/x-www-form-urlencoded')
         self.assertEqual(response.status_code, 401)

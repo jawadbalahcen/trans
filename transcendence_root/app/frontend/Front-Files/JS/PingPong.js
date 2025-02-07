@@ -154,7 +154,7 @@ document.getElementById('joinExistingRoomSection').style.display = 'none';
 fetch('http://127.0.0.1:8000/api/create-room/', {
 method: 'POST',
 headers: {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/x-www-form-urlencoded',
 },
 body: JSON.stringify({
     player1: player1,

@@ -85,7 +85,7 @@ function GameContent(){
 }
 
 function SettingContent(){
-    fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/api/update_user/', {
+    fetch('http://127.0.0.1:8001/api/update_user/', {
         method: 'GET',
         credentials: 'include',
     })
@@ -135,7 +135,7 @@ function EditContent(){
         console.log(dataForm.get('City'));
         console.log( "image ::::" + dataForm.get('image_link'));
         const data = new URLSearchParams(dataForm);
-        fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/api/update_user/', {
+        fetch('http://127.0.0.1:8001/api/update_user/', {
             method : 'POST',
             credentials: 'include',
             headers: {
@@ -159,7 +159,7 @@ function EditContent(){
 
 
 function ProfileContent(){
-    fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/api/user/', {
+    fetch('http://127.0.0.1:8001/api/user/', {
         method: 'GET',
         credentials: 'include',
     })
@@ -224,7 +224,7 @@ function LoadContent(templateId){
             console.log(dataForm.get('fullname'));
             const data = new URLSearchParams(dataForm);
             //URL should be replaced by the correct URL 
-            fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/api/register/', {
+            fetch('http://127.0.0.1:8001/api/register/', {
                 method : 'POST',
                 credentials: 'include',
                 headers: {
@@ -261,7 +261,7 @@ function LoadContent(templateId){
             console.log(dataForm.get('password'));
             const data = new URLSearchParams(dataForm);
             //URL should be replaced by the correct URL 
-            fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/api/login/', {
+            fetch('http://127.0.0.1:8001/api/login/', {
                 method : 'POST',
                 credentials: 'include',
                 headers: {
@@ -326,7 +326,7 @@ window.addEventListener('resize', checkWindowSize);
 
 
 function checkUserLoginFromBackend() {
-    fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/auth-check/', {
+    fetch('http://127.0.0.1:8001/auth-check/', {
         method: 'GET',
         credentials: 'include',
     })
@@ -380,7 +380,7 @@ function checkUserLoginFromBackend() {
 }
 
 // function checkUserLoginFromBackend() {
-//     fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/auth-check/', {
+//     fetch('http://127.0.0.1:8001/auth-check/', {
 //         method: 'GET',
 //         credentials: 'include',
 //     })
@@ -433,10 +433,10 @@ function checkUserLoginFromBackend() {
 //         navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
 //     });
 // }
-
+let csrfToken = '';
 document.addEventListener('DOMContentLoaded', function() {
     // csrfToken
-    fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/get-csrf-token/', {
+    fetch('http://127.0.0.1:8001/get-csrf-token/', {
         credentials: 'include'
     })
     .then(response => response.json())
