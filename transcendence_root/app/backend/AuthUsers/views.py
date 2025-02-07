@@ -33,9 +33,6 @@ def register_user(request):
     # Auto-login after registration
     login(request, user)
     return Response({'message': 'Registration successful'}, status=201)
-import logging
-
-
 
 @api_view(['POST'])
 def user_login(request):

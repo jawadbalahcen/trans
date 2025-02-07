@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure--l7#a7&tpz3unjyhk%n1rzov-l^a@&&27ce(zv^=az(mr#@8p5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 
 # Application definition
@@ -69,6 +70,7 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -76,13 +78,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    
 ]
-
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8080",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:8080",
+#     "http://localhost:8080",
+#     "https://ideal-capybara-67xr4rv76463p6r-8080.app.github.dev",
+# ]
 
 ROOT_URLCONF = 'backend.urls'
 

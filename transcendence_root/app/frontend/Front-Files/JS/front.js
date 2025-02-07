@@ -85,7 +85,7 @@ function GameContent(){
 }
 
 function SettingContent(){
-    fetch('http://127.0.0.1:8001/api/update_user/', {
+    fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/api/update_user/', {
         method: 'GET',
         credentials: 'include',
     })
@@ -135,12 +135,12 @@ function EditContent(){
         console.log(dataForm.get('City'));
         console.log( "image ::::" + dataForm.get('image_link'));
         const data = new URLSearchParams(dataForm);
-        fetch('http://127.0.0.1:8001/api/update_user/', {
+        fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/api/update_user/', {
             method : 'POST',
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                // 'X-CSRFToken': csrfToken, // Include CSRF token
+                'X-CSRFToken': csrfToken, // Include CSRF token
             },
             body : data
         }).then(res => res.json())
@@ -159,7 +159,7 @@ function EditContent(){
 
 
 function ProfileContent(){
-    fetch('http://127.0.0.1:8001/api/user/', {
+    fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/api/user/', {
         method: 'GET',
         credentials: 'include',
     })
@@ -224,11 +224,12 @@ function LoadContent(templateId){
             console.log(dataForm.get('fullname'));
             const data = new URLSearchParams(dataForm);
             //URL should be replaced by the correct URL 
-            fetch('http://127.0.0.1:8001/api/register/', {
+            fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/api/register/', {
                 method : 'POST',
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': csrfToken,
                 },
                 body : data
             }).then(res => res.json())
@@ -260,11 +261,12 @@ function LoadContent(templateId){
             console.log(dataForm.get('password'));
             const data = new URLSearchParams(dataForm);
             //URL should be replaced by the correct URL 
-            fetch('http://127.0.0.1:8001/api/login/', {
+            fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/api/login/', {
                 method : 'POST',
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': csrfToken,
                 },
                 body : data
             }).then(res => res.json())
@@ -324,7 +326,7 @@ window.addEventListener('resize', checkWindowSize);
 
 
 function checkUserLoginFromBackend() {
-    fetch('http://127.0.0.1:8001/auth-check/', {
+    fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/auth-check/', {
         method: 'GET',
         credentials: 'include',
     })
@@ -377,63 +379,72 @@ function checkUserLoginFromBackend() {
     });
 }
 
-function checkUserLoginFromBackend() {
-    fetch('http://127.0.0.1:8001/auth-check/', {
-        method: 'GET',
-        credentials: 'include',
-    })
-    .then(response => response.json())
-    .then(data => {
-            navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
-        if (data.isLoggedIn) {
-            console.log("User is authenticated!");
-            const path = window.location.pathname;
-            if(path)
-                handleRouting(path);
-            else
-                navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
-            document.getElementById('home').addEventListener('click', (e) => {
-                e.preventDefault();
-                navigateTo('homeContent', '../Css/Home.css',  '/Home');
-            });
-            document.getElementById('profile').addEventListener('click', (e) => {
-                console.log("profiiiiiile");
-                e.preventDefault();
-                navigateTo('ProfileContent', '../Css/Profile.css',  '/Profile');
-            });
-            document.getElementById('game').addEventListener('click', (e) => {
-                e.preventDefault();
-                navigateTo('gameContent', '../Css/Game.css',  '/Game');
+// function checkUserLoginFromBackend() {
+//     fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/auth-check/', {
+//         method: 'GET',
+//         credentials: 'include',
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//             navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
+//         if (data.isLoggedIn) {
+//             console.log("User is authenticated!");
+//             const path = window.location.pathname;
+//             if(path)
+//                 handleRouting(path);
+//             else
+//                 navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
+//             document.getElementById('home').addEventListener('click', (e) => {
+//                 e.preventDefault();
+//                 navigateTo('homeContent', '../Css/Home.css',  '/Home');
+//             });
+//             document.getElementById('profile').addEventListener('click', (e) => {
+//                 console.log("profiiiiiile");
+//                 e.preventDefault();
+//                 navigateTo('ProfileContent', '../Css/Profile.css',  '/Profile');
+//             });
+//             document.getElementById('game').addEventListener('click', (e) => {
+//                 e.preventDefault();
+//                 navigateTo('gameContent', '../Css/Game.css',  '/Game');
     
-            });
-            document.getElementById('tournoi').addEventListener('click', (e) => {
-                e.preventDefault();
-                navigateTo('tournoiContent', '../Css/Tournoi.css',  '/Tournoi');
+//             });
+//             document.getElementById('tournoi').addEventListener('click', (e) => {
+//                 e.preventDefault();
+//                 navigateTo('tournoiContent', '../Css/Tournoi.css',  '/Tournoi');
     
-            });
-            document.getElementById('settings').addEventListener('click', (e) => {
-                e.preventDefault();
-                navigateTo('settingContent', '../Css/Setting.css',  '/Settings');
-            });
-            document.getElementById('Chat').addEventListener('click', (e) => {
-                e.preventDefault();
-                navigateTo('ChatContent', '../Css/Chat.css', '/Chat');
-            });
-        } 
-        else {
-            console.log(data.isLoggedIn);
-            console.log("User is not authenticated");
-            navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
-        }
-    })
-    .catch(error => {
-        console.error('Error checking login status:', error);
-        navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
-    });
-}
+//             });
+//             document.getElementById('settings').addEventListener('click', (e) => {
+//                 e.preventDefault();
+//                 navigateTo('settingContent', '../Css/Setting.css',  '/Settings');
+//             });
+//             document.getElementById('Chat').addEventListener('click', (e) => {
+//                 e.preventDefault();
+//                 navigateTo('ChatContent', '../Css/Chat.css', '/Chat');
+//             });
+//         } 
+//         else {
+//             console.log(data.isLoggedIn);
+//             console.log("User is not authenticated");
+//             navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Error checking login status:', error);
+//         navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
+//     });
+// }
 
 document.addEventListener('DOMContentLoaded', function() {
-    
+    // csrfToken
+    fetch('https://ideal-capybara-67xr4rv76463p6r-8001.app.github.dev/get-csrf-token/', {
+        credentials: 'include'
+    })
+    .then(response => response.json())
+    .then(data => {
+        csrfToken = data.csrfToken;
+    })
+    .catch(error => console.error('Error fetching CSRF token:', error));
+    //////
     window.addEventListener('popstate', function(event) {
         if (event.state) {
             LoadContent(event.state.content);
