@@ -7,11 +7,19 @@ from django.middleware.csrf import get_token
 from django.contrib.auth import authenticate, login
 from rest_framework.decorators import api_view
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth import logout
 from .models import CustomUser
+
+@api_view(['POST'])
+def user_logout(request):
+    logout(request)
+    return Response({"message": "Logout successful"})
 
 @api_view(['POST'])
 def register_user(request):
     data = request.data
+    if request.user.is_authenticated:
+        return Response({'message': 'User already logged in'},status=400)
     # Validate required fields
     required_fields = ['username', 'email', 'password']
     if not all(field in data for field in required_fields):
@@ -26,23 +34,23 @@ def register_user(request):
         username=data['username'],
         email=data['email'],
         password=make_password(data['password']),
-        full_name=data.get('full_name', ''),
-        city=data.get('city', '')
+        fullname=data.get('fullname', ''),
+        City=data.get('City', '')
     )
     # Auto-login after registration
     login(request, user)
-    return Response({'message': 'Registration successful'}, status=201)
+    return Response({'message': 'Registration successful', 'full_name': data.get('full_name'),'city' : data.get('City'),}, status=201)
 
 @api_view(['POST'])
 def user_login(request):
-    email = request.data.get('email')
+    username = request.data.get('username')
     password = request.data.get('password')
     
-    user = authenticate(request, email=email, password=password)
+    user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        return Response({'message': 'Login successful'})
-    return Response({'error': 'Invalid credentials'}, status=401)
+        return Response({'message': 'Login successful', 'logg':request.user.is_authenticated})
+    return Response({'error': 'Invalid credentials', 'username':username, 'pass':password})
 
 
 class CurrentUserView(APIView):
@@ -62,7 +70,7 @@ class UpdateUserView(APIView):
         if 'image_link' in request.FILES:
             user.image_link = request.FILES['image_link']
         
-        for field in ['full_name', 'username', 'email', 'city', 'avatar']:
+        for field in ['fullname', 'username', 'email', 'City']:
             if field in data:
                 setattr(user, field, data[field])
         

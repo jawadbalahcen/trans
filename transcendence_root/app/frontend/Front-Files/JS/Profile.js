@@ -1,27 +1,27 @@
 
-fetch('http://127.0.0.1:8001/api/user/', {
-        method: 'GET',
-        credentials: 'include',
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data.image_link);
-        const profileImg = document.getElementById('profile');
-        profileImg.src = data.image_link;
-        document.getElementById("fullName").textContent = data.full_name || "N/A";
-        document.getElementById("userName").textContent = data.username || "N/A";
-        document.getElementById("Mail").textContent = data.email || "N/A";
-        document.getElementById("Avatar").textContent = data.avatar || "N/A";
-        document.getElementById("City").textContent = data.city || "N/A";
-    })
-    .catch(error => {
-        console.error("There was a problem fetching the data:", error);
-    });
+// fetch('http://127.0.0.1:8001/api/user/', {
+//         method: 'GET',
+//         credentials: 'include',
+//     })
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error("Network response was not ok");
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         console.log(data.image_link);
+//         const profileImg = document.getElementById('profile');
+//         profileImg.src = data.image_link;
+//         document.getElementById("fullName").textContent = data.fullname || "N/A";
+//         document.getElementById("userName").textContent = data.username || "N/A";
+//         document.getElementById("Mail").textContent = data.email || "N/A";
+//         document.getElementById("Avatar").textContent = data.avatar || "N/A";
+//         document.getElementById("City").textContent = data.City || "N/A";
+//     })
+//     .catch(error => {
+//         console.error("There was a problem fetching the data:", error);
+//     });
 function ScrollforEachContainer(containerContainer, ContainerList){
 
     const container = document.getElementById(containerContainer);
@@ -144,5 +144,6 @@ ScrollforEachContainer('HistoryContainer', 'HistoryList');
         }
     }
     updateAchievements(playerScore);
+    
 
 

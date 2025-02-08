@@ -32,7 +32,8 @@
 						<form class="Info">
 							<div class="input-group">
 								<div class="input-field">
-									<input type="text" name="email" placeholder="Email" class="input-box" id="logEmail" required>
+									<!-- django default auth doesnt auth with email -->
+									<input type="text" name="username" placeholder="Username" class="input-box" id="logEmail" required> 
 								</div>
 								<div class="input-field">
 									<input type="password" name="password" placeholder="Password" class="input-box" id="logPassword" required>
@@ -101,17 +102,17 @@
 					<div class="match1">
 						<label class="circle"><img id="profile" src="../assets/images/fouaouri.jpeg" alt="Your Image"></label>
 						<div class="userinfo">
-							<label class="Title">Full name	: <h1 id="fullName"> Fatima Ezzahra Ouaourikt</h1></label>
+							<label class="Title">Full name	: <h1 id="fullName"></h1></label>
 
-							<label class="Title">username	: <h1 id="userName">Fouaouri</h1></label>
+							<label class="Title">username	: <h1 id="userName"></h1></label>
 								
-							<label class="Title">Mail		: <h1 id="Mail">fzouaourikt@gmail.com</h1></label>
+							<label class="Title">Mail		: <h1 id="Mail"></h1></label>
 								
-							<label class="Title">Avatar		: <h1 id="Avatar">Toothless</h1></label>
+							<label class="Title">Avatar		: <h1 id="Avatar"></h1></label>
 
-							<label class="Title">Achievement	: <h1 id="Achievement">Gold</h1></label>
+							<label class="Title">Achievement	: <h1 id="Achievement"></h1></label>
 
-							<label class="Title">City		: <h1 id="City">Benguerir</h1></label>
+							<label class="Title">City		: <h1 id="City"></h1></label>
 						</div>
 					</div>
 				</div>
@@ -204,7 +205,8 @@
 						<label class="process"><img id="Diamondprocess" src="../assets/images/0process.png" alt="Diamond"></label>
 					</div>
 				</div>
-				<script src="../JS/Profile.js" defer></script>
+				<!-- ADDED "type="module"" If you’re using modern JavaScript with modules (by adding type="module" to your <script> tag), each module has its own scope by default -->
+				<script type="module" src="../JS/Profile.js" defer></script> 
 		</template>
 
 

@@ -1,6 +1,7 @@
 //load and remove .css files
 let index = 0;
 let login = 0;
+let csrfToken = '';
 
 
 function removeCssFiles(){
@@ -85,7 +86,7 @@ function GameContent(){
 }
 
 function SettingContent(){
-    fetch('http://127.0.0.1:8001/api/update_user/', {
+    fetch('http://127.0.0.1:8001/api/user/', {
         method: 'GET',
         credentials: 'include',
     })
@@ -99,12 +100,12 @@ function SettingContent(){
 
         console.log(data.image_link);
         const profileImg = document.getElementById('profile');
-        profileImg.src = data.image_link;
-        document.getElementById("fullName").textContent = data.full_name || "N/A";
+        profileImg.src = data.image_link || "../assets/images/fouaouri.jpeg";
+        document.getElementById("fullName").textContent = data.fullname || "Nset/A";
         document.getElementById("userName").textContent = data.username || "N/A";
         document.getElementById("Mail").textContent = data.email || "N/A";
         document.getElementById("Avatar").textContent = data.avatar || "N/A";
-        document.getElementById("City").textContent = data.city || "N/A";
+        document.getElementById("City").textContent = data.City || "N/A";
     })
     .catch(error => {
         console.error("There was a problem fetching the data:", error);
@@ -113,6 +114,35 @@ function SettingContent(){
         e.preventDefault();
         navigateTo('EditContent', '../Css/Edit.css',  '/Edit');
     });
+    // ADDED
+    document.getElementById('Logout').addEventListener('click', (e) => {
+        e.preventDefault();
+        fetch('http://127.0.0.1:8001/api/logout/', {
+            method: 'POST',
+            credentials: 'include',  // Ensures cookies (and session) are sent
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                // Include CSRF token if your view is CSRF-protected.
+                // Make sure `csrfToken` is defined properly (see previous examples).
+                'X-CSRFToken': csrfToken,
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Logout failed');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data.message);  // e.g., "Logout successful"
+            // Once logout is successful, navigate to the home content.
+            navigateTo('homeContent', '../Css/Home.css', '/Home');
+        })
+        .catch(error => {
+            console.error('Logout error:', error);
+            // Optionally handle the error (e.g., show a message to the user)
+        });
+    });///
 }
 
 function EditContent(){
@@ -148,12 +178,17 @@ function EditContent(){
           .catch(error => console.log(error));
     });
 
-    document.getElementById('Avatar').addEventListener('click', (e) => {
-        e.preventDefault();
-        LoadContent('Avatar1');
-        navigateTo('Avatar1', '../Css/avatar1.css',  '/Avatar1');
+    // const editElement = document.getElementById('Avatar')
+    // if (editElement) {
+    //     editElement.addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     LoadContent('Avatar1');
+    //     navigateTo('Avatar1', '../Css/avatar1.css',  '/Avatar1');
 
-    });
+    //     });
+    // } else {
+    // console.error("Element with id 'someId' was not found.");
+    // }
     
 }
 
@@ -170,20 +205,20 @@ function ProfileContent(){
         return response.json();
     })
     .then(data => {
-        console.log(data.image_link);
+        console.log('Fullname|',data.fullname, '|');
         const profileImg = document.getElementById('profile');
-        profileImg.src = data.image_link;
-        document.getElementById("fullName").textContent = data.full_name || "N/A";
+        profileImg.src = data.image_link || "../assets/images/fouaouri.jpeg";
+        document.getElementById("fullName").textContent = data.fullname || "NssssssssssssssA";
         document.getElementById("userName").textContent = data.username || "N/A";
         document.getElementById("Mail").textContent = data.email || "N/A";
         document.getElementById("Avatar").textContent = data.avatar || "N/A";
-        document.getElementById("City").textContent = data.city || "N/A";
+        document.getElementById("City").textContent = data.City || "N/A";
     })
     .catch(error => {
         console.error("There was a problem fetching the data:", error);
     });
 
-    startScrooling();
+    // startScrooling();
 }
 
 
@@ -199,13 +234,24 @@ function LoadContent(templateId){
 
     dynamicContent.appendChild(templateContent);
 
+    //because eventlistner is lost in first when load the profile page directly via the URL bar reattach navigation listeners after loading new content
+    // document.getElementById('profile').addEventListener('click', (e) => {
+    //     console.log("profiiiiiile");
+    //     e.preventDefault();
+    //     navigateTo('ProfileContent', '../Css/Profile.css',  '/Profile');
+    // });
+    ////
+
     if(templateId === 'openningContent'){
         document.getElementById('clickme').addEventListener('click', (e) => {
+            checkUserLoginFromBackend();
             navigateTo('firstContent', '../Css/first_page.css',  '/LoginPage')
         });
     }
     if(templateId === 'homeContent')
         HomeContent();
+    if(templateId === 'ProfileContent')
+        ProfileContent();
     if(templateId === 'gameContent')
         GameContent();
     if(templateId === 'settingContent')
@@ -220,7 +266,7 @@ function LoadContent(templateId){
             event.preventDefault();
 
             const dataForm = new FormData(info);
-            console.log(dataForm.get('City'));
+            console.log('City:', dataForm.get('City'));
             console.log(dataForm.get('fullname'));
             const data = new URLSearchParams(dataForm);
             //URL should be replaced by the correct URL 
@@ -232,9 +278,18 @@ function LoadContent(templateId){
                     'X-CSRFToken': csrfToken,
                 },
                 body : data
-            }).then(res => res.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
+            })//ADDED
+            .then(data => {
+                console.log('Registration successful:',data);
+                // Force a refresh of auth state
+                checkUserLoginFromBackend();
+                // Redirect to home
+                navigateTo('homeContent', '../Css/Home.css', '/Home');
+            })
+            .catch(error => {
+                console.error('Registration error:', error);
+                alert('Registration failed: ' + error.message);
+            });////
         });
         document.getElementById('showLogin').addEventListener('click', (e) => {
             e.preventDefault();
@@ -257,7 +312,7 @@ function LoadContent(templateId){
             event.preventDefault();
 
             const dataForm = new FormData(info);
-            console.log(dataForm.get('email'));
+            console.log(dataForm.get('username'));
             console.log(dataForm.get('password'));
             const data = new URLSearchParams(dataForm);
             //URL should be replaced by the correct URL 
@@ -269,9 +324,19 @@ function LoadContent(templateId){
                     'X-CSRFToken': csrfToken,
                 },
                 body : data
-            }).then(res => res.json())
-            .then(data => console.log(data))
-            .catch(error => console.log(error));
+            })///ADDED
+            .then(res => {
+                if (!res.ok) throw new Error('Login failed');
+                return res.json();
+            })
+            .then(data => {
+                console.log('Login successful:', data);
+                checkUserLoginFromBackend();
+            })
+            .catch(error => {
+                console.error('Login error:', error);
+                alert('Login failed: ' + error.message);
+            });///////
         });
         document.getElementById('showRegister').addEventListener('click', (e) => {
             console.log('dkhel');
@@ -332,6 +397,7 @@ function checkUserLoginFromBackend() {
     })
     .then(response => response.json())
     .then(data => {
+
         if (data.isLoggedIn) {
             console.log("User is authenticated!");
             const path = window.location.pathname;
@@ -370,7 +436,10 @@ function checkUserLoginFromBackend() {
         else {
             console.log(data.isLoggedIn);
             console.log("User is not authenticated");
-            navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
+            // navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
+            // ADDED
+            navigateTo('firstContent', '../Css/first_page.css',  '/LoginPage');
+            ///
         }
     })
     .catch(error => {
@@ -433,7 +502,6 @@ function checkUserLoginFromBackend() {
 //         navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
 //     });
 // }
-let csrfToken = '';
 document.addEventListener('DOMContentLoaded', function() {
     // csrfToken
     fetch('http://127.0.0.1:8001/get-csrf-token/', {
@@ -442,8 +510,13 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(data => {
         csrfToken = data.csrfToken;
+        
     })
     .catch(error => console.error('Error fetching CSRF token:', error));
+
+    const path = window.location.pathname;
+    console.log("Initial routing for path:", path);
+    handleRouting(path);
     //////
     window.addEventListener('popstate', function(event) {
         if (event.state) {

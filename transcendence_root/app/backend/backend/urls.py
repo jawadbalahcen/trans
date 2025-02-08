@@ -23,7 +23,8 @@ from AuthUsers.views import(
     AuthCheckView,
     CSRFTokenView,
     register_user,
-    user_login
+    user_login,
+    user_logout
 )
 
 urlpatterns = [
@@ -34,6 +35,8 @@ urlpatterns = [
     path('get-csrf-token/', CSRFTokenView.as_view()),
     path('api/register/', register_user),
     path('api/login/', user_login),
+    path('api/logout/', user_logout, name='user_logout'),
+
 ]
 
 # from django.contrib import admin

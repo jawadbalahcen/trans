@@ -9,15 +9,14 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
-    full_name = models.CharField(max_length=255, blank=True)
-    city = models.CharField(max_length=100, blank=True)
+    fullname = models.CharField(max_length=255, blank=True)
+    City = models.CharField(max_length=100, blank=True)
     avatar = models.CharField(max_length=100, blank=True)
     image_link = models.ImageField(upload_to='avatars/', null=True, blank=True)
         
     def __str__(self):
         return self.username
-        self.status = status
-        self.save()
+
 
 # =============================================
 
