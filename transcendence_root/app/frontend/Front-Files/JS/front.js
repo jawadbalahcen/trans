@@ -148,7 +148,7 @@ function SettingContent(){
 function EditContent(){
     const info = document.querySelector('.Infos');
 
-    info.addEventListener("submit", event =>{
+    info.addEventListener("submit",  event =>{
         event.preventDefault();
         
         const dataForm = new FormData(info);
@@ -163,7 +163,7 @@ function EditContent(){
             dataForm.append('image_link', file);
         console.log(10000);
         console.log(dataForm.get('City'));
-        console.log( "image ::::" + dataForm.get('image_link'));
+        console.log( "image ::::" , dataForm.get('image_link').name);
         const data = new URLSearchParams(dataForm);
         fetch('http://127.0.0.1:8001/api/update_user/', {
             method : 'POST',
@@ -330,7 +330,7 @@ function LoadContent(templateId){
                 return res.json();
             })
             .then(data => {
-                console.log('Login successful:', data);
+                console.log(data);
                 checkUserLoginFromBackend();
             })
             .catch(error => {
@@ -510,6 +510,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(data => {
         csrfToken = data.csrfToken;
+        // console.log("CSRF token fetched:", csrfToken);
         
     })
     .catch(error => console.error('Error fetching CSRF token:', error));

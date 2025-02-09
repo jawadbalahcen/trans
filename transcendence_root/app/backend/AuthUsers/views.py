@@ -9,6 +9,8 @@ from rest_framework.decorators import api_view
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import logout
 from .models import CustomUser
+from django.core.exceptions import ValidationError
+
 
 @api_view(['POST'])
 def user_logout(request):
@@ -60,22 +62,30 @@ class CurrentUserView(APIView):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
+def validate_image(file):
+    valid_types = ['image/jpeg', 'image/png', 'image/gif']
+    if file.content_type not in valid_types:
+        raise ValidationError('Unsupported file type')
+
 class UpdateUserView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
         user = request.user
-        data = request.data.copy()
+        data = request.data
         
-        if 'image_link' in request.FILES:
-            user.image_link = request.FILES['image_link']
+        # if 'image_link' in request.FILES:
+        #     user.image_link = request.FILES['image_link']
         
-        for field in ['fullname', 'username', 'email', 'City']:
-            if field in data:
+        for field in ['fullname', 'username', 'email', 'City', 'image_link']:
+            if field in data and data[field]:
                 setattr(user, field, data[field])
         
         user.save()
-        return Response(UserSerializer(user).data)
+        return Response({
+            'status': 'success',
+            'user': UserSerializer(user, context={'request': request}).data
+        }, status=200)
 
 class AuthCheckView(APIView):
     def get(self, request):
