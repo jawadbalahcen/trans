@@ -3,6 +3,19 @@ let index = 0;
 let login = 0;
 let csrfToken = '';
 
+function fetchCsrfToken() {
+    fetch('http://127.0.0.1:8001/get-csrf-token/', {
+        credentials: 'include'
+    })
+    .then(response => response.json())
+    .then(data => {
+        csrfToken = data.csrfToken;
+        console.log("CSRF token fetched:", csrfToken);
+        
+    })
+    .catch(error => console.error('Error fetching CSRF token:', error));
+}
+
 
 function removeCssFiles(){
     const stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
@@ -86,6 +99,7 @@ function GameContent(){
 }
 
 function SettingContent(){
+    fetchCsrfToken();
     fetch('http://127.0.0.1:8001/api/user/', {
         method: 'GET',
         credentials: 'include',
@@ -101,6 +115,7 @@ function SettingContent(){
         console.log(data.image_link);
         const profileImg = document.getElementById('profile');
         profileImg.src = data.image_link || "../assets/images/fouaouri.jpeg";
+        console.log(profileImg.src, 'thiso onss');
         document.getElementById("fullName").textContent = data.fullname || "Nset/A";
         document.getElementById("userName").textContent = data.username || "N/A";
         document.getElementById("Mail").textContent = data.email || "N/A";
@@ -136,7 +151,7 @@ function SettingContent(){
         .then(data => {
             console.log(data.message);  // e.g., "Logout successful"
             // Once logout is successful, navigate to the home content.
-            navigateTo('homeContent', '../Css/Home.css', '/Home');
+            navigateTo('firstContent', '../Css/first_page.css',  '/LoginPage')
         })
         .catch(error => {
             console.error('Logout error:', error);
@@ -146,33 +161,34 @@ function SettingContent(){
 }
 
 function EditContent(){
+    fetchCsrfToken();
     const info = document.querySelector('.Infos');
 
+    
     info.addEventListener("submit",  event =>{
         event.preventDefault();
         
         const dataForm = new FormData(info);
         for (let [key, value] of dataForm.entries()) {
-                console.log(`${key}: ${value}`);
-            }
+            console.log(`${key}: ${value}`);
+        }
         const imageInput = document.getElementById('profile-update');
         const file = imageInput.files[0]; // Get the selected file
-            
-            // Add the file to FormData
+        
+        // Add the file to FormData
         if (file)
             dataForm.append('image_link', file);
         console.log(10000);
         console.log(dataForm.get('City'));
         console.log( "image ::::" , dataForm.get('image_link').name);
-        const data = new URLSearchParams(dataForm);
+        // const data = new URLSearchParams(dataForm);
         fetch('http://127.0.0.1:8001/api/update_user/', {
             method : 'POST',
             credentials: 'include',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
                 'X-CSRFToken': csrfToken, // Include CSRF token
             },
-            body : data
+            body : dataForm
         }).then(res => res.json())
           .then(data => console.log(data))
           .catch(error => console.log(error));
@@ -259,17 +275,19 @@ function LoadContent(templateId){
     if(templateId === 'EditContent')
         EditContent();
     if(templateId === 'Regester'){
+        
         const info = document.querySelector('.Info');
-
+        
         info.addEventListener("submit", event =>{
             console.log(10000);
             event.preventDefault();
-
+            
             const dataForm = new FormData(info);
             console.log('City:', dataForm.get('City'));
             console.log(dataForm.get('fullname'));
             const data = new URLSearchParams(dataForm);
             //URL should be replaced by the correct URL 
+            fetchCsrfToken();
             fetch('http://127.0.0.1:8001/api/register/', {
                 method : 'POST',
                 credentials: 'include',
@@ -315,7 +333,8 @@ function LoadContent(templateId){
             console.log(dataForm.get('username'));
             console.log(dataForm.get('password'));
             const data = new URLSearchParams(dataForm);
-            //URL should be replaced by the correct URL 
+            //URL should be replaced by the correct URL
+            fetchCsrfToken();
             fetch('http://127.0.0.1:8001/api/login/', {
                 method : 'POST',
                 credentials: 'include',
@@ -502,19 +521,10 @@ function checkUserLoginFromBackend() {
 //         navigateTo('openningContent', '../Css/openning.css',  '/OpeningPage');
 //     });
 // }
+
 document.addEventListener('DOMContentLoaded', function() {
     // csrfToken
-    fetch('http://127.0.0.1:8001/get-csrf-token/', {
-        credentials: 'include'
-    })
-    .then(response => response.json())
-    .then(data => {
-        csrfToken = data.csrfToken;
-        // console.log("CSRF token fetched:", csrfToken);
-        
-    })
-    .catch(error => console.error('Error fetching CSRF token:', error));
-
+    
     const path = window.location.pathname;
     console.log("Initial routing for path:", path);
     handleRouting(path);

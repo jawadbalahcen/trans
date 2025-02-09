@@ -8,10 +8,7 @@ WORKDIR /app
 COPY app/pingpong/requirements.txt .
 
 # Install Python dependencies
-RUN apt-get update && \
-    pip install --no-cache-dir -r requirements.txt && \
-    apt-get clean && \
-    && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the Django project files into the container
 COPY app/pingpong/ . 

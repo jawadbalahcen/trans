@@ -10,7 +10,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth import logout
 from .models import CustomUser
 from django.core.exceptions import ValidationError
-
+from rest_framework.parsers import MultiPartParser, FormParser
 
 @api_view(['POST'])
 def user_logout(request):
@@ -69,15 +69,16 @@ def validate_image(file):
 
 class UpdateUserView(APIView):
     permission_classes = [IsAuthenticated]
-
+    parser_classes = [MultiPartParser, FormParser]
+    
     def post(self, request):
         user = request.user
         data = request.data
         
-        # if 'image_link' in request.FILES:
-        #     user.image_link = request.FILES['image_link']
+        if 'image_link' in request.FILES:
+            user.image_link = request.FILES['image_link']
         
-        for field in ['fullname', 'username', 'email', 'City', 'image_link']:
+        for field in ['fullname', 'username', 'email', 'City']:
             if field in data and data[field]:
                 setattr(user, field, data[field])
         
