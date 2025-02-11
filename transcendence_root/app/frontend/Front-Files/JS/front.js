@@ -162,9 +162,27 @@ function SettingContent(){
 
 function EditContent(){
     fetchCsrfToken();
+    // ADD
     const info = document.querySelector('.Infos');
 
-    
+    fetch('http://127.0.0.1:8001/api/user/', {
+        method: 'GET',
+        credentials: 'include',
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return response.json();
+    })
+    .then(data => {
+
+        console.log(data.image_link);
+        const profileImg = document.getElementById('edit-profile');
+        profileImg.src = data.image_link || "../assets/images/fouaouri.jpeg";
+        console.log(profileImg.src, 'thiso onss');
+    });
+    //////////////////
     info.addEventListener("submit",  event =>{
         event.preventDefault();
         
@@ -190,9 +208,12 @@ function EditContent(){
             },
             body : dataForm
         }).then(res => res.json())
-          .then(data => console.log(data))
+          .then(data => {
+            console.log(data);
+            navigateTo('settingContent', '../Css/Setting.css',  '/Settings');
+          })
           .catch(error => console.log(error));
-    });
+        });
 
     // const editElement = document.getElementById('Avatar')
     // if (editElement) {
@@ -315,10 +336,11 @@ function LoadContent(templateId){
         });
         document.getElementById('intra42-login-btn').addEventListener('click', (e) => {
             e.preventDefault();
-            navigateTo('homeContent', '../Css/Home.css',  '/Home');
-            // const intra42LoginUrl = "https://api.intra.42.fr/oauth/authorize?client_id=u-s4t2ud-9d2d8fa97dc6b65bd84be86acda526487543730f59841291ee8187f3970bac15&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Faccounts%2F42intra%2Flogin%2Fcallback%2F&response_type=code";
-            // window.location.href = intra42LoginUrl;
-            // templateId = 'dataContent';
+            
+                        
+            window.location.href = 'http://127.0.0.1:8001/accounts/login/42intra/';
+            
+    
         });
     }
     if(templateId === 'firstContent'){

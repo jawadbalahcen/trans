@@ -4,3 +4,4 @@ psycopg2-binary==2.9.6
 pillow
 djangorestframework
 django-cors-headers
+social-auth-app-django

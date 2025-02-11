@@ -42,12 +42,41 @@ INSTALLED_APPS = [
     'AuthUsers',
     'rest_framework',
     'corsheaders',
+    'social_django',
     # 'users',
     # 'allauth',
     # 'allauth.account',
     # 'allauth.socialaccount',
     # 'allauth.socialaccount.providers.oauth2',
 ]
+# /////////
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.intra42.Intra42OAuth2',  # Intra 42 backend
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_INTRA42_KEY = 'u-s4t2ud-fa56592af3e2706a7c475200e62743f0cfb58849cd52ad70d0226064732d3950'
+SOCIAL_AUTH_INTRA42_SECRET = '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'
+SOCIAL_AUTH_INTRA42_SCOPE = ['public']  # Adjust scopes as needed
+# Set the callback URL that Intra 42 will redirect to after login.
+# Since your Django backend is in another container running on 127.0.0.1:8001,
+# ensure that the callback URL is reachable by your browser (via Nginx or a forwarded URL).
+SOCIAL_AUTH_INTRA42_REDIRECT_URI = 'http://127.0.0.1:8001/accounts/42/callback/'
+
+# SOCIAL_AUTH_PIPELINE = (
+#     'social_core.pipeline.social_auth.social_details',
+#     'social_core.pipeline.social_auth.social_uid',
+#     'social_core.pipeline.social_auth.auth_allowed',
+#     'social_core.pipeline.social_auth.social_user',
+#     'social_core.pipeline.user.get_username',
+#     'social_core.pipeline.user.create_user',
+#     'social_core.pipeline.social_auth.associate_user',
+#     'social_core.pipeline.social_auth.load_extra_data',
+#     'social_core.pipeline.user.user_details',
+# )
+# /////////////////////////
+
 
 AUTH_USER_MODEL = 'AuthUsers.CustomUser'
 
@@ -66,6 +95,7 @@ AUTH_USER_MODEL = 'AuthUsers.CustomUser'
 #         }
 #     }
 # }
+
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
@@ -83,6 +113,7 @@ MIDDLEWARE = [
 CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:8080",
     "http://localhost:8080",
+    "http://localhost:8001",
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True
@@ -90,6 +121,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8080",
     "http://localhost:8080",
+    "http://localhost:8001",
 ]
 
 ROOT_URLCONF = 'backend.urls'

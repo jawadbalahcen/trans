@@ -7,12 +7,8 @@ from django.db import models
 # ======================================
 
 from django.contrib.auth.models import AbstractUser
-# 
-# import uuid
-# def upload_to(instance, filename):
-#     ext = filename.split('.')[-1]
-#     new_name = f"{uuid.uuid4().hex}.{ext}"
-#     return f"{new_name}"
+from social_django.models import UserSocialAuth
+
 
 class CustomUser(AbstractUser):
     fullname = models.CharField(max_length=255, blank=True)
@@ -22,6 +18,12 @@ class CustomUser(AbstractUser):
         
     def __str__(self):
         return self.username
+    
+    def get_social_auth(self, provider):
+        try:
+            return UserSocialAuth.objects.get(user=self, provider=provider)
+        except UserSocialAuth.DoesNotExist:
+            return None
 
 
 # =============================================

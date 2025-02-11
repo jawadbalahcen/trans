@@ -11,7 +11,20 @@ from django.contrib.auth import logout
 from .models import CustomUser
 from django.core.exceptions import ValidationError
 from rest_framework.parsers import MultiPartParser, FormParser
+from django.shortcuts import redirect
+from social_django.views import complete
 
+class Intra42Callback(APIView):
+    def get(self, request):
+        # Social auth will handle most of the process
+        response = complete(request, '42intra')
+        # Return a redirect to your frontend
+        return redirect('http://localhost:8080/')
+    
+class Intra42Login(APIView):
+    def get(self, request):
+        return complete(request, '42intra')
+    
 @api_view(['POST'])
 def user_logout(request):
     logout(request)
@@ -90,9 +103,14 @@ class UpdateUserView(APIView):
 
 class AuthCheckView(APIView):
     def get(self, request):
-        return Response({
+        user_data = {
             'isLoggedIn': request.user.is_authenticated
-        })
+        }
+        if request.user.is_authenticated:
+            social = request.user.get_social_auth('42intra')
+            if social:
+                user_data['intra42'] = social.uid
+        return Response(user_data)
 
 class CSRFTokenView(APIView):
     def get(self, request):

@@ -16,7 +16,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from AuthUsers.views import(
     CurrentUserView,
     UpdateUserView,
@@ -28,7 +28,7 @@ from AuthUsers.views import(
 )
 from django.conf import settings
 from django.conf.urls.static import static
-
+from AuthUsers import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/user/', CurrentUserView.as_view()),
@@ -39,6 +39,10 @@ urlpatterns = [
     path('api/login/', user_login),
     path('api/logout/', user_logout, name='user_logout'),
 
+    path('accounts/login/42intra/', views.Intra42Login.as_view(), name='intra42_login'),
+    path('accounts/42intra/callback/', views.Intra42Callback.as_view(), name='intra42_callback'),
+    
+    path('accounts/', include('social_django.urls', namespace='social')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
