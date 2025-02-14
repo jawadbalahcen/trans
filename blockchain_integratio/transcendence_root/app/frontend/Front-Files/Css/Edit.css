@@ -1,0 +1,431 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.bg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-image: url('../assets/images/new_backround.jpg'); /* Path to your image */
+    background-size: cover; /* Ensure the image covers the whole area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+    filter: blur(15px);
+    /* position: relative; Ensure proper stacking context */
+}
+
+@font-face {
+    font-family: 'Carbo';
+    src: url('../Fonts/KGBlankSpaceSolid.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Umpty';
+    src: url('../Fonts/umpty-inside.otf') format('truetype');
+}
+
+.logo {
+    position: absolute;
+    top: 2%;
+    left: 46.1%;
+    width: 150px; /* Adjust the size as needed */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+.rectangle{
+    top: 15%;
+    left: 25%;
+    position: absolute;
+    height: 80%;
+    width: 50%;
+    border-radius: 20px;
+    align-items: center;
+    background-color: rgb(20 51 33 / 70%);
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.90);
+}
+
+.circle {
+    position: absolute;
+    top: 10%;
+    left: 42%;
+    width: 15%;
+    height: 16%;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+}
+
+.circle img {
+    position: absolute;
+    width: 120%;
+    height: auto;
+    object-fit: cover;
+}
+
+.Done {
+    position: absolute;
+    left: 40%;
+    font-size: 120%;
+}
+
+.Done button {
+    font-family: 'Carbo', serif;
+    font-weight: 200;
+    font-style: normal;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+    text-shadow: 0 0 20px rgba(3, 63, 3, 0.9);
+    border-radius: 10px;
+}
+
+.Done:hover{
+    color: #ffffff;
+    box-shadow: 0 0 10px  #54ec99, 0 0 20px #54ec99, 0 0 30px #54ec99;
+    background-color: #54ec99;
+    transform: scale(1.1);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+/* Custom file upload button */
+.custom-file-upload {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Change color on hover */
+.custom-file-upload:hover {
+    background-color: #45a049;
+}
+
+/* Display file name */
+#file-name {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.Infos {
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    text-transform: uppercase;
+    font-size: 70%;
+    color: #26D10A;
+
+}
+
+#profile-update{
+    color: #ffffff;
+    position: absolute;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+    text-shadow: 0 0 20px rgba(3, 63, 3, 0.9);
+    border-radius: 10px;
+    top: 30%;
+    left: 36.6%;
+}
+
+
+.f_name {
+    margin-bottom: 7%;
+    color: #f1f0f0;
+    background-color: rgba(15, 157, 53, 0.3);
+    font-size: 200%;
+    width: 85%;
+}
+
+.Avatar {
+    font-family: 'Carbo', serif;
+    font-weight: 200;
+    font-style: normal;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+    text-shadow: 0 0 20px rgba(3, 63, 3, 0.9);
+    border-radius: 10px;
+}
+
+.button-Profile {
+    position: absolute;
+    top: 5%;
+    left: 17%;
+}
+
+.button-Game {
+    position: absolute;
+    top: 5%;
+    left: 30%;
+}
+
+.button-Chat {
+    position: absolute;
+    top: 5%;
+    right: 20%;
+}
+
+.button-Tournoi {
+    position: absolute;
+    top: 5%;
+    right: 30%;
+}
+
+.button-Home {
+    position: absolute;
+    top: 5%;
+    left: 7%;
+}
+
+button {
+    font-family: monospace;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 180%;
+    text-align: center;
+    color: transparent;
+    background: white;
+    background-clip: text;
+    -webkit-background-clip: text;
+    border: none;
+}
+
+.button-Settings button {
+    position: absolute;
+    top: 5%;
+    right: 7%;
+    font-family: monospace;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 220%;
+    color: #ffffff;
+    text-align: center;
+    background: linear-gradient(135deg, #f5f5f5, #8abf82);
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.90);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.search-box1 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position : absolute;
+    bottom: 1%;
+    left: 2%;
+    margin: 15px;
+}
+
+.search-box1 .input-wrapper1 {
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search-box1 input {
+    font-family: monospace;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    width: 70%;
+    box-shadow: 0 2px 4px rgba(187, 161, 161, 0.1);
+}
+
+.search-box1 .material-icons1 {
+    width: 8%;
+    margin-right: 3%;
+}
+
+input {
+    border: none;
+    border-radius: 20px;
+    width: 60%;
+    color: hsl(122, 100%, 16%);
+}
+
+input::placeholder {
+    color: rgba(50, 52, 50, 0.612);
+    font-weight: 300;
+    margin-left: 20px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.search-results {
+    position: absolute;
+    bottom: 8%;
+    left: 5%;
+    width: 15.7%;
+    max-height: 200px;
+    overflow-y: auto;
+    background: #3e7735ad;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+}
+
+.search-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.search-item:hover {
+    background-color: #f0f0f0;
+}
+@media (max-width : 1400px){
+    .logo {
+        position: absolute;
+        top: 2%;
+        left: 45%;
+        width: 12%;
+        height: auto;
+    }
+    .circle {
+        position: absolute;
+        top: 20%;
+        left: 45%;
+        width: 10%;
+        height: 12%;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ccc;
+    }
+    
+    .circle img {
+        position: absolute;
+        width: 120%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .Done {
+        position: absolute;
+        bottom: 10%;
+        right: 45%;
+    }
+    
+    .Done button {
+        font-family: 'Carbo', serif;
+        font-weight: 200;
+        font-style: normal;
+        font-size: 250%;
+        color: #ffffff;
+        background-color: rgba(15, 157, 53, 0.6);
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+        border-radius: 10px;
+    }
+    
+    @font-face {
+        font-family: myFont;
+        src: url(../../my_fonts/Roboto-Light.ttf);
+    }
+    
+    .Infos {
+        position: absolute;
+        top: 40%;
+        left: 20%;
+        font-family: myFont;
+        text-transform: uppercase;
+        font-size: 60%;
+        color: #26D10A;
+    
+    }
+    
+    @font-face {
+        font-family: h1Font;
+        src: url(../../my_fonts/namefont.ttf);
+    }
+    
+    .button-Profile {
+        position: absolute;
+        top: 5%;
+        left: 17%;
+    }
+    
+    .button-Home {
+        position: absolute;
+        top: 5%;
+        left: 7%;
+    }
+    
+    .button-Tournoi {
+        position: absolute;
+        top: 5%;
+        right: 30%;
+    }
+    
+    .button-Chat {
+        position: absolute;
+        top: 5%;
+        right: 20%;
+    }
+    
+    .button-Game {
+        position: absolute;
+        top: 5%;
+        left: 30%;
+    }
+    
+    button {
+        font-family: monospace;
+        font-weight: 100;
+        font-style: normal;
+        font-size: 170%;
+        text-align: center;
+        color: transparent;
+        background: white;
+        background-clip: text;
+        -webkit-background-clip: text;
+        border: none;
+    }
+    
+    .button-Settings button {
+        position: absolute;
+        top: 5%;
+        right: 7%;
+        font-family: monospace;
+        font-weight: 100;
+        font-style: normal;
+        font-size: 210%;
+        color: #ffffff;
+        text-align: center;
+        background: linear-gradient(135deg, #f5f5f5, #8abf82);
+        text-shadow: 0 0 5px rgba(0, 255, 0, 0.90);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}

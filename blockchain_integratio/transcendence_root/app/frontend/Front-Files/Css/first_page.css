@@ -1,0 +1,210 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.bg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-image: url('../assets/images/new_backround.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(10px);
+}
+@font-face {
+    font-family: 'Carbo';
+    src: url('../Fonts/KGBlankSpaceSolid.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Umpty';
+    src: url('../Fonts/umpty-inside.otf') format('truetype');
+}
+
+.logo{
+    position: absolute;
+    top: 2%;
+    left: 45.7%;
+    width: 120px;
+    height: auto;
+}
+
+.rectangle {
+    position: absolute;
+    bottom: 20%;
+    right: 35.15%;
+    width: 30%;
+    height: 60%;
+    background-color: rgba(157, 161, 158, 0.25);
+    border-radius: 40px;
+}
+
+.top-header{
+    display: flex;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+}
+  
+  .top-header h3 {
+    font-size: 170%;
+    font-family: 'Carbo', serif;
+    margin: 2%;
+  }
+  
+  .input-group .input-field {
+    display: flex;
+    margin-top: 8%;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .input-box {
+    font-family: 'Carbo', serif;
+    width: 80%;
+    padding: 15px;
+    color: #ffffff;
+    background-color: #020202ab;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+    text-shadow: 0 0 20px rgba(3, 63, 3, 0.9);
+    border-radius: 5px;
+  }
+  
+.remember{
+    display: flex;
+    margin-top: 8%;
+    margin-left: 6%;
+    color: #ffffff;
+}
+
+ .input-field {
+    display: flex;
+    margin-top: 5%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-submit {
+    font-family: 'Carbo', serif;
+    font-size: 150%;
+    font-style: normal;
+    color: #ffffff;
+    background-color: rgb(36 174 36 / 90%);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+    text-shadow: 0 0 20px rgba(3, 63, 3, 0.9);
+    border-radius: 10px;
+}
+
+.input-submit:hover{
+    color: #ffffff;
+    box-shadow: 0 0 10px  #54ec99, 0 0 20px #54ec99, 0 0 30px #54ec99;
+    background-color: #54ec99;
+    transform: scale(1.1);
+    border-radius: 10px;
+    cursor: pointer;
+}
+  p{
+    display: flex;
+    font-size: 120%;
+    font-family: 'Carbo', serif;
+    margin-top: 10%;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+  }
+
+  p button {
+    margin-top: 2%;
+    font-size: 100%;
+    color: #008707;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  p button:hover {
+    text-decoration: underline;
+  }
+
+.button-42 {
+    position: absolute;
+    width: 80%;
+    height: 10%;
+    bottom: 20%;
+    left: 10%;
+    background-color: hsl(185deg 100% 50.4% / 38%);
+    border-radius: 10px;
+}
+
+.button-42 button {
+    padding-left: 25%;
+    padding-top: 3%;
+    font-family: none;
+    font-style: normal;
+    /* font-size: 180%; */
+    /* text-align: center; */
+    background-color: rgb(0 0 0);
+    /* text-shadow: 0 0 10px rgb(255, 255, 255); */
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+.button-Profile {
+    position: absolute;
+    top: 5%;
+    left: 17%;
+}
+
+.button-Game {
+    position: absolute;
+    top: 5%;
+    left: 30%;
+}
+
+.button-Tournoi {
+    position: absolute;
+    top: 5%;
+    right: 30%;
+}
+
+.button-Chat {
+    position: absolute;
+    top: 5%;
+    right: 20%;
+}
+
+.button-Settings {
+    position: absolute;
+    top: 5%;
+    right: 7%;
+}
+
+.button-Home {
+    position: absolute;
+    top: 5%;
+    left: 7%;
+}
+
+button {
+    font-family: monospace;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 180%;
+    text-align: center;
+    color: transparent;
+    background: white;
+    background-clip: text;
+    -webkit-background-clip: text;
+    border: none;
+}

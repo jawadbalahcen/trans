@@ -1,0 +1,295 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.bg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-image: url('../assets/images/new_backround.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(15px);
+}
+
+@font-face {
+    font-family: 'Carbo';
+    src: url('../Fonts/KGBlankSpaceSolid.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Umpty';
+    src: url('../Fonts/umpty-inside.otf') format('truetype');
+}
+
+.logo {
+    position: absolute;
+    top: 2%;
+    left: 46.1%;
+    width: 150px;
+    height: auto;
+}
+
+h1 {
+    position: absolute;
+    top: 12%;
+    left: 30%;
+    font-size: 300%;
+    font-family: 'Carbo', serif;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+}
+.play-AI {
+    position: absolute;
+    top: 25%;
+    right: 15%;
+    width: 27%;
+    height: 60%;
+    padding: 20px;
+    background-color:  rgba(15, 128, 30, 0.5);
+    border-radius: 20px;
+}
+
+.play-AI img{
+    
+    align-items: center;
+
+}
+
+
+.Player-player {
+    position: absolute;
+    top: 25%;
+    left: 15%;
+    width: 30%;
+    height: 60%;
+    padding: 20px;
+    background-color:  rgba(15, 128, 30, 0.5);
+    border-radius: 20px;
+}
+
+.Player-player img{
+    align-items: center;
+    height: 80%;
+    width: 90%;
+
+}
+
+.AI-button button{
+    position: absolute;
+    bottom: 5%;
+    left:25%;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+
+
+}
+
+.player-button button{
+    position: absolute;
+    bottom: 5%;
+    left:18%;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+
+}
+
+
+.button-Profile {
+    position: absolute;
+    top: 5%;
+    left: 17%;
+}
+
+.button-Tournoi {
+    position: absolute;
+    top: 5%;
+    right: 30%;
+}
+
+.button-Chat {
+    position: absolute;
+    top: 5%;
+    right: 20%;
+}
+
+.button-Settings {
+    position: absolute;
+    top: 5%;
+    right: 7%;
+}
+
+.button-Home {
+    position: absolute;
+    top: 5%;
+    left: 7%;
+}
+
+button {
+    font-family: monospace;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 180%;
+    color: #ffffff;
+    text-align: center;
+    background: none;
+    border: none;
+}
+
+
+.button-Game button {
+    position: absolute;
+    top: 5%;
+    left: 30%;
+    font-family: monospace;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 220%;
+    color: #ffffff;
+    text-align: center;
+    background: linear-gradient(135deg, #f5f5f5, #8abf82);
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.90);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+@media (max-width : 1400px){
+
+    .logo {
+        position: absolute;
+        top: 2%;
+        left: 45%;
+        width: 12%;
+        height: auto;
+    }
+
+    h1 {
+        position: absolute;
+        top: 12%;
+        left: 25%;
+        font-size: 250%;
+        font-family: 'Carbo', serif;
+        color: #ffffff;
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+    }
+
+    .play-AI {
+        position: absolute;
+        top: 30%;
+        right: 15%;
+        width: 30%;
+        height: 50%;
+        padding: 20px;
+        background-color:  rgba(15, 128, 30, 0.5);
+        border-radius: 20px;
+    }
+
+    .play-AI img{
+    
+        position: absolute;
+        align-items: center;
+        width: 90%;
+        height: 60%;
+    
+    }
+    
+    
+    .Player-player {
+        position: absolute;
+        top: 30%;
+        left: 15%;
+        width: 30%;
+        height: 50%;
+        padding: 20px;
+        background-color:  rgba(15, 128, 30, 0.5);
+        border-radius: 20px;
+    }
+    
+    .Player-player img{
+        
+        position: absolute;
+        align-items: center;
+        width: 90%;
+        height: 60%;
+    
+    }
+    
+    .AI-button button{
+        position: absolute;
+        bottom: 10%;
+        left:32%;
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+    }
+    
+    .player-button button{
+        position: absolute;
+        bottom: 10%;
+        left:28%;
+        text-shadow: 0 0 10px rgba(0, 255, 0, 0.90);
+    
+    }
+    .button-Profile {
+        position: absolute;
+        top: 5%;
+        left: 17%;
+    }
+    
+    .button-Home {
+        position: absolute;
+        top: 5%;
+        left: 7%;
+    }
+    
+    .button-Tournoi {
+        position: absolute;
+        top: 5%;
+        right: 30%;
+    }
+    
+    .button-Chat {
+        position: absolute;
+        top: 5%;
+        right: 20%;
+    }
+    
+    .button-Settings {
+        position: absolute;
+        top: 5%;
+        right: 7%;
+    }
+    
+    button {
+        font-family: monospace;
+        font-weight: 100;
+        font-style: normal;
+        font-size: 170%;
+        color: #ffffff;
+        text-align: center;
+        background: none;
+        border: none;
+    }
+    
+    
+    .button-Game button {
+        position: absolute;
+        top: 5%;
+        left: 30%;
+        font-family: monospace;
+        font-weight: 100;
+        font-style: normal;
+        font-size: 210%;
+        color: #ffffff;
+        text-align: center;
+        background: linear-gradient(135deg, #f5f5f5, #8abf82);
+        text-shadow: 0 0 5px rgba(0, 255, 0, 0.90);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}

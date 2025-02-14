@@ -1,0 +1,886 @@
+
+
+
+@font-face {
+    font-family: 'Carbo';
+    src: url('../Fonts/KGBlankSpaceSolid.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Umpty';
+    src: url('../Fonts/umpty-inside.otf') format('truetype');
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Carbo', sans-serif;
+}
+
+.bg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-image: url('../assets/images/new_backround.jpg'); /* Path to your image */
+    background-size: cover; /* Ensure the image covers the whole area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+    filter: blur(15px);
+}
+
+.logo{
+    position: absolute;
+    top: 2%;
+    left: 46.1%;
+    width: 120px;
+    height: auto;
+}
+
+.button-Profile {
+    position: absolute;
+    top: 5%;
+    left: 17%;
+}
+
+.button-Game {
+    position: absolute;
+    top: 5%;
+    left: 30%;
+}
+
+.button-Tournoi {
+    position: absolute;
+    top: 5%;
+    right: 30%;
+}
+
+.button-Home {
+    position: absolute;
+    top: 5%;
+    left: 7%;
+}
+
+.button-Settings {
+    position: absolute;
+    top: 5%;
+    right: 7%;
+}
+
+button {
+    font-family: monospace;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 170%;
+    text-align: center;
+    color: transparent;
+    background: white;
+    background-clip: text;
+    -webkit-background-clip: text;
+    border: none;
+}
+
+.button-Chat button {
+    position: absolute;
+    top: 5%;
+    right: 20%;
+    font-family: monospace;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 210%;
+    color: #ffffff;
+    text-align: center;
+    background: linear-gradient(135deg, #f5f5f5, #8abf82);
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.90);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.search-box1 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position : absolute;
+    bottom: 1%;
+    left: 2%;
+    margin: 15px;
+}
+
+.search-box1 .input-wrapper1 {
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search-box1 input {
+    font-family: monospace;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    width: 70%;
+    box-shadow: 0 2px 4px rgba(187, 161, 161, 0.1);
+}
+
+.search-box1 .material-icons1 {
+    width: 8%;
+    margin-right: 3%;
+}
+
+input {
+    border: none;
+    border-radius: 20px;
+    width: 60%;
+    color: hsl(122, 100%, 16%);
+}
+
+input::placeholder {
+    color: rgba(50, 52, 50, 0.612);
+    font-weight: 300;
+    margin-left: 20px;
+}
+
+input:focus {
+    outline: none;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    height: 90%;
+    width: 80%;
+    background:  rgb(20 51 33 / 50%);
+    padding: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.90);
+    /* position: relative; */
+}
+
+.users-container {
+    position: absolute;
+    margin: 2% auto;
+    width: 25%;
+    height: 90%;
+    background: hsla(120, 22%, 74%, 0.861);
+    display: flex;
+    flex-direction: column;
+    padding: 5% 0;
+    border-radius: 20px;
+  }
+
+.person-selector-button{
+    display: flex;
+    padding: 2% 0;
+    margin-bottom: 8%;
+}
+#chat-container {
+    height: 85%;
+    width: 45%;
+    right: 15%;
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+  }
+.divider{
+    border-bottom: 1px solid #888989;
+    margin: 6% 0;
+}
+
+.chat-container{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    position: absolute;
+    font-family: 'Roboto', sans-serif;
+    left: 30%;
+    margin: 2% auto;
+    width: 65%;
+    height: 90%;
+    padding: 5% 0;
+    box-shadow: 3px 0px 6px hsl(0, 2%, 58%);
+    border-radius: 20px;
+}
+
+.chat-box {
+    flex-grow: 1; /* Allows the chat box to take the remaining space */
+    overflow-y: auto; /* Scroll when messages overflow */
+    padding: 10px;
+    /* background-color: #f9f9f9; */
+  }
+  
+  .sent-input {
+    margin-top: auto; /* Pushes the input field to the bottom */
+    padding: 10px;
+    /* background-color: #fff; */
+    /* border-top: 1px solid #ccc; */
+  }
+  
+  .chat-input input {
+    width: calc(100% - 100px); /* Take full width minus button space */
+    padding: 10px;
+  }
+  
+  .chat-input button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .chat-input button:hover {
+    background-color: #0056b3;
+  }
+h2{
+    font-size: 120%;
+    margin-bottom: 10%;
+    margin-top: 0;
+}
+
+/* .sent-input{
+
+} */
+
+#message-input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+  .top-icons {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center icons horizontally */
+  }
+  
+  .bottom-icons {
+    margin-top: auto; /* Pushes the bottom-icons to the bottom of the sidebar */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center icons horizontally */
+  }
+  
+  .sidebar i {
+    color: #5fe413; /* Color for the icons */
+    font-size: 24px; /* Adjust icon size */
+    margin: 20px 0; /* Space between icons */
+    cursor: pointer; /* Change cursor on hover */
+  }
+  
+
+.received {
+    background-color: #f1f1f1;
+    color: #000;
+    padding: 1% 2%;
+    margin: 1% 0;
+    border-radius: 10px;
+    align-self: flex-start;
+}
+.sent {
+    background-color: #0c720e;
+    color: #fff;
+    padding: 1% 2%;
+    margin: 1% 0;
+    border-radius: 10px;
+    align-self: flex-end;
+}
+
+#templates-area{
+    position: absolute;
+    height: 85%;
+    width: 80%;
+    top: 15%;
+    left: 10%;
+}
+
+
+
+/* Scroll button styles */
+.scroll-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000; /* Background color for buttons */
+    color: #000000; /* Text color for buttons */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.8;
+    transition: opacity 0.3s, background-color 0.3s; /* Smooth transition */
+}
+
+.scroll-button:hover {
+    opacity: 1;
+    background-color: #333; /* Darker background on hover */
+}
+
+/* Specific styles for scroll-up and scroll-down buttons */
+.scroll-up {
+    top: 10px; /* Position slightly below the top */
+    border-radius: 10px 10px 0 0;
+}
+
+.scroll-down {
+    bottom: 10px; /* Position slightly above the bottom */
+    border-radius: 0 0 10px 10px;
+}
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+
+/* Styling for the user list */
+#user-list {
+
+    height: 100%;
+    overflow-y: auto;
+    padding: 2%;
+    margin-top: 10%;
+    animation: fadeIn 2s ease-in-out; /* Apply fadeIn animation for user list */
+}
+
+.all-users {
+    list-style: none;
+    margin-bottom: 10px;
+    animation: fadeIn 0.6s ease-in-out; /* Fade in for each user item */
+}
+
+.user-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+}
+
+.user-link:focus,
+.user-link:hover {
+    text-decoration: none; /* Ensure no underline on hover or focus */
+}
+
+.friend-drawer {
+    transition: background-color 0.3s, transform 0.3s ease;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.6s ease-in-out; /* Fade in for the drawer */
+}
+
+.friend-drawer--onhover:hover {
+    background-color: hsl(115, 28%, 73%);
+    transform: scale(1.02); /* Slightly enlarges on hover */
+    cursor: pointer;
+}
+
+.text {
+    flex-grow: 1;
+    color: #ffffff;
+}
+
+.time {
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .friend-drawer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .time {
+        margin-top: 5px;
+    }
+}
+
+/* Darker version of the friend drawer */
+.friend-drawer--grey {
+    background: hsl(120, 8%, 28%); /* Dark grey background */
+}
+
+/* Time styling */
+.friend-drawer .time {
+    color: hwb(103 43% 31%); /* Grey color */
+}
+
+.friend-drawer--onhover:hover p,
+.friend-drawer--onhover:hover h6,
+.friend-drawer--onhover:hover .time {
+    color: #fff !important; /* White text on hover */
+}
+
+/* Border for separation */
+hr {
+    margin: 5px auto;
+    width: 60%;
+    border-color: hsl(103, 73%, 54%); /* Dark grey border */
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px); /* Slight slide effect from below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Move to the original position */
+    }
+}
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+.chat-panel {
+    position: absolute;
+    right: 1%;
+    /* top: 5%; */
+    /* height: auto; */
+    width: 80%;
+    background: hsl(120, 8%, 15%);
+    border-radius: 20px;
+}
+
+
+
+/* Custom scrollbar styles for Webkit browsers (Chrome, Safari) */
+.chat-box::-webkit-scrollbar {
+    width: 12px; /* Width of the vertical scrollbar */
+    height: 12px; /* Height of the horizontal scrollbar */
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background-color: #000000; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background-color: #1c1c1c; /* Color of the scrollbar track */
+    border-radius: 10px; /* Rounded corners of the scrollbar track */
+}
+
+/* Custom scrollbar styles for Firefox */
+.chat-box {
+    scrollbar-width: thin;
+    scrollbar-color: #000000 #1c1c1c;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    margin: 5px 0;
+    display: inline-block;
+}
+
+.chat-box-tray {
+    /* background: rgb(45, 48, 45); */
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 0 0 20px 20px;
+    height: 85px;
+    width: 102%;
+    box-sizing: border-box;
+}
+
+
+
+
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 40px;
+    box-shadow: 3px 0px 6px hsl(0, 2%, 58%); /* Optional shadow for the sidebar */
+}
+
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+
+.search-box {
+    margin: 15px;
+}
+
+.search-box .input-wrapper {
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search-box input {
+    font-family: monospace;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(187, 161, 161, 0.1);
+}
+
+.search-box .material-icons {
+    width: 1%;
+    margin-right: 3%;
+}
+
+input {
+    border: none;
+    border-radius: 20px;
+    width: 80%;
+    color: hsl(122, 100%, 16%);
+}
+
+input::placeholder {
+    color: rgba(50, 52, 50, 0.612);
+    font-weight: 300;
+    margin-left: 20px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.search-results {
+    position: absolute;
+    bottom: 8%;
+    left: 5%;
+    width: 15.7%;
+    max-height: 200px;
+    overflow-y: auto;
+    background: #3e7735ad;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+}
+
+.search-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.search-item:hover {
+    background-color: #f0f0f0;
+}
+/*---------------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+
+/* Chat input field styling */
+.chat-box-tray input {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    flex-grow: 1;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: none;
+    color: hsl(123deg 25.77% 26.27%);
+    background: #ffffff;
+    outline: none;
+    box-shadow: 3px 0px 6px hsl(0, 0%, 0%);
+}
+
+/* Send button styling */
+#send-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 10px 15px; Adjust padding for better spacing */
+    /* padding: 15px; Larger padding for a bigger button */
+    /* border-radius: 50%; Circular button */
+    background: transparent; /* No background color */
+    border: none;
+    color: #63cf1a; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 40px; /* Larger font size for the icon */
+    box-shadow: none; /* Remove shadow */
+    transition: color 0.3s; /* Smooth color transition */
+    /* box-shadow: 3px 0px 6px rgb(0, 0, 0); Shadow on hover */
+
+}
+
+#send-button:hover {
+    color: rgb(160, 190, 153); /* Change text color on hover */
+}
+
+/* Icon in settings tray */
+.header--right i {
+    font-size: 25px; /* Adjust size as needed */
+    color: hsl(120, 59%, 44%); /* Grey color */
+    transition: color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+.header--right i:hover {
+    color: hsl(120, 59%, 44%); /* Green color on hover */
+    cursor: pointer;
+    box-shadow: 3px 0px 6px rgb(0, 0, 0); /* Shadow on hover */
+}
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    overflow-y: auto;
+    /* background-image: url('muhim.png'); */
+    background-size: cover; /* Ensures the image covers the whole element */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 90vh; /* Set height relative to the viewport height */
+    max-height: none; /* Disable the max-height constraint */
+    scroll-behavior: smooth;
+    color: #ffffff; /* Set text color to white for better contrast */
+    /* filter: brightness(70%) contrast(110%);  */
+}
+/* Keyframes for message fade-in animation */
+@keyframes fadeInMessage {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Start slightly below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Settle into place */
+    }
+}
+
+
+
+/* Wrapper for each message */
+.message-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px; /* More spacing between messages */
+    max-width: 100%;
+    word-wrap: break-word;
+    position: relative; /* To control positioning of timestamp */
+    animation: fadeInMessage 0.5s ease-in-out; /* Apply the fade-in animation */
+}
+
+/* Sent messages */
+.sent-message .message-text {
+    font-family: Arial, Helvetica, sans-serif;
+    align-self: flex-end;
+    background-color: hsl(120, 29%, 37%);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px 10px 0 10px;
+    margin: 5px;
+    max-width: 80%;
+    word-wrap: break-word;
+    display: inline-block;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    position: relative;
+}
+
+/* Received messages */
+.received-message .message-text {
+    font-family: Arial, Helvetica, sans-serif;
+    align-self: flex-start;
+    background-color: #ffffff; /* White background for received messages */
+    color: hsl(108, 9%, 34%);
+    padding: 10px;
+    border-radius: 10px 10px 10px 0;
+    margin: 5px;
+    max-width: 80%;
+    word-wrap: break-word;
+    display: inline-block;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    position: relative;
+}
+
+/* Message text */
+.message-text {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Timestamp for sent messages (right aligned) */
+.sent-message .timestamp {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #ffffff; /* Light grey for timestamp */
+    margin-top: 0px;
+    text-align: right;
+    position: relative; /* Positioned relative to the message-wrapper */
+    margin-left: auto; /* Align timestamp to the right */
+    padding-right: 8px; /* Ensure it's aligned with message bubble */
+}
+
+/* Timestamp for received messages (left aligned) */
+.received-message .timestamp {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #ffffff; /* Light grey for timestamp */
+    margin-top: 0px;
+    text-align: left;
+    position: relative; /* Positioned relative to the message-wrapper */
+    padding-left: 8px; /* Align timestamp to the left with message bubble */
+}
+
+/* Add a subtle border between sent/received messages for better separation */
+.message-wrapper:not(:first-child) {
+    border-top: 1px solid rgba(142, 153, 138, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .message-wrapper {
+        max-width: 90%; /* Increase message width for smaller screens */
+    }
+    
+    .message-text {
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+
+    .timestamp {
+        font-size: 10px;
+    }
+}
+
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+
+
+/* Placeholder Message Styling */
+.message-container {
+    text-align: center;
+    color: hsl(0, 0%, 100%);
+    font-size: 150%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200%;
+    height: 100%;
+    overflow-y: 100%;
+    margin-top: -15%;
+}
+
+.message-container p{
+    font-size: 150%;
+}
+
+.Chat-icon {
+    width: 15%;
+}
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+/* Settings Tray Styling */
+.header {
+    background: #000;
+    padding: 5px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 65px; /* Space between profile and menu */
+}
+
+.header .friend-drawer {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Full width */
+}
+
+.profile-image {
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    border-radius: 50%;
+    margin-right: 15px; /* Space between image and text */
+    object-fit: cover; /* Ensure the image covers the container */
+}
+
+.user-name {
+    flex: 1; /* Allow this section to take up available space */
+    color: hsl(120, 6%, 75%);
+
+}
+/* Settings Menu Styling */
+.settings-menu {
+    position: relative; /* Position relative for dropdown menu */
+    cursor: pointer; /* Change cursor to pointer for clickable menu */
+    color: #63cf1a;
+    display: inline-block; /* Ensure the container fits the content */
+}
+
+/* Hidden menu options with smooth transition */
+.settings-menu .menu-options {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    background: #228B22;
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
+}
+
+/* Show menu options with animation */
+.settings-menu:hover .menu-options {
+    display: block; /* Make the menu block-level */
+    opacity: 1; /* Fully opaque */
+    transform: translateY(0); /* Slide into position */
+}
+
+/* Menu item styling */
+.menu-options li {
+    padding: 10px;
+    border-bottom: 1px solid #ffffff; /* Optional: separator between menu items */
+    transition: background 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Remove border for the last item */
+.menu-options li:last-child {
+    border-bottom: none; /* Remove border for the last item */
+}
+
+/* Link styling within the menu */
+.menu-options li a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Hover effect for menu links */
+.menu-options li a:hover {
+    background: hwb(100 85% 11%);
+    color: #ffffff; /* Ensure text color remains white on hover */
+}
+
+
+
+
+
+/*------------------------------------------------------------------------------------------------------------------------*/
+.notification-indicator {
+    display: none;
+    color: red;
+    font-weight: bold;
+    margin-left: 5px;
+    }
+
+.notification-indicator.show {
+    display: inline;
+}
+

@@ -1,0 +1,46 @@
+
+
+-wallet_address to be sent from the frontend (use web3.js framework 
+to retrieve the wallet address after the user connects thier wallet to eg. meta mask).
+
+{
+
+
+        npm install web3
+
+        // If you're using a script tag, include:
+        // <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+
+        async function getWalletAddress() {
+            // Check if MetaMask (or another wallet) is installed
+            if (window.ethereum) {
+                try {
+                    // Create a new Web3 instance
+                    window.web3 = new Web3(window.ethereum);
+                    
+                    // Request account access
+                    await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    
+                    // Get the list of accounts
+                    const accounts = await web3.eth.getAccounts();
+                    if (accounts.length > 0) {
+                        console.log("Wallet address:", accounts[0]);
+                        return accounts[0];
+                    } else {
+                        console.error("No accounts found.");
+                    }
+                } catch (error) {
+                    console.error("Error retrieving wallet address:", error);
+                }
+            } else {
+                console.error("No Ethereum provider found. Please install MetaMask.");
+            }
+        }
+
+
+
+
+}
+
+scores:
+    -scores sent to "def store_score(request):" view directly from the

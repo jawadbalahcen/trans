@@ -1,0 +1,555 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.bg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-image: url('../assets/images/new_backround.jpg'); /* Path to your image */
+    background-size: cover; /* Ensure the image covers the whole area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+    filter: blur(15px);
+    /* position: relative; Ensure proper stacking context */
+}
+
+@font-face {
+    font-family: 'Carbo';
+    src: url('../Fonts/KGBlankSpaceSolid.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Umpty';
+    src: url('../Fonts/umpty-inside.otf') format('truetype');
+}
+
+.logo {
+    position: absolute;
+    top: 2%;
+    left: 46.1%;
+    width: 120px; /* Adjust the size as needed */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+.Title{
+    display: flex;
+    margin-top: 5%;
+    align-items: center;
+    color: #ffffff;
+    font-family: monospace;
+    font-size: 120%;
+}
+
+
+
+.Title h1 {
+    margin: 0;
+    font-size: 18px;
+    color: rgb(175, 234, 187);
+}
+
+.userinfo{
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    color: #ffffff;
+    font-family: monospace;
+    font-size: 120%;
+    gap: 10%;
+}
+
+.match1 {
+    display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 5% 0;
+        gap: 50px;
+}
+
+#User-Data {
+    position: absolute;
+    position: absolute;
+    gap: 30px;
+    padding: 0 50px;
+    left: 30%;
+    top: 15%;
+    background-color: rgba(8, 59, 29, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.9);
+    margin: 16px auto;
+    height: 30%;
+    width: 80%;
+    max-width: 700px;
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10%;
+    left: 5%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+}
+
+.circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#Add-Friend {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    right: 7%;
+    top: 15%;
+    width: 35%;
+}
+
+.Discreption{
+    margin-bottom: 3%;
+    font-size: 150%;
+    font-family: 'Carbo', serif;
+    color: #ffffff;
+}
+
+fieldset {
+    color: rgb(0, 0, 0);
+}
+
+#Discreption{
+    color:#ffffff;
+    font-size: 100%;
+    font-family: monospace;
+}
+
+.History {
+    position: absolute;
+    gap: 30px;
+    padding: 20px;
+    left: 30%;
+    bottom: 5%;
+    background-color: rgba(8, 59, 29, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.9);
+    margin: 16px auto;
+    height: 35%;
+    overflow-y: auto;
+    width: 20%;
+    max-width: 500px;
+    scrollbar-width: thin;
+    scrollbar-color: #00ff22 #00ff22;
+}
+
+.match {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10%;
+    gap: 20px;
+}
+.h3background{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: rgb(0, 14, 6);
+    padding: 2px 2px 10px 1px;
+}
+h3 {
+    display: flex;
+    color: white;
+    justify-content: center;
+    font-family: 'Carbo', serif;
+    /* font-size: 150%; */
+}
+#myscore,
+#otherscore{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Carbo', serif;
+    font-size: 150%;
+}
+.mycircle,
+.othercircle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ccc;
+    overflow: hidden;
+}
+
+.mycircle img,
+.othercircle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.vscircle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    margin: 0 10%;
+    background-color: #ccc;
+    overflow: hidden;
+}
+.vscircle img{
+    position: absolute;
+    width: 12%;
+    height: auto;
+    object-fit: cover;
+}
+  /* Webkit scrollbar (Chrome, Safari, Edge) */
+  .History::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .History::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 100px;
+  }
+  
+  .History::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 100px;
+  }
+  
+  .History::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* Spacing for history items if you have any */
+  .History > * {
+    margin-bottom: 8px;
+  }
+  
+  .History > *:last-child {
+    margin-bottom: 0;
+  }
+
+  #follow{
+    background-color: rgb(0 255 107 / 57%);
+    box-shadow: 0 0 50px rgb(0 0 0);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 1% 4%;
+    font-size: 100%;
+    font-family: 'Carbo', serif;
+  }
+
+  #follow:hover {
+    background-color: #16a34a;
+}
+  #username{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-left: 5%;
+    font-family: 'Carbo', serif;
+    /* font-size: 150%; */
+}
+
+
+/* friends list scrolling */
+
+
+  .friends-list {
+    position: absolute;
+    gap: 30px;
+    padding: 20px;
+    right: 25%;
+    bottom: 5%;
+    background-color: rgba(8, 59, 29, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.9);
+    margin: 16px auto;
+    height: 35%;
+    overflow-y: auto;
+    width: 20%;
+    max-width: 500px;
+    scrollbar-width: thin;
+     
+}
+
+.friends-container {
+    height: calc(100% - 40px);
+    position: relative;
+    transition: transform 0.5s ease;
+}
+.history-container {
+    height: calc(100% - 40px);
+    position: relative;
+    transition: transform 0.5s ease;
+}
+  .friends-list::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .friends-list::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 100px;
+  }
+  
+  .friends-list::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 100px;
+  }
+  
+  .friends-list::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* Spacing for friends-list items if you have any */
+  .friends-list > * {
+    margin-bottom: 8px;
+  }
+  
+  .friends-list > *:last-child {
+    margin-bottom: 0;
+  }
+
+/* friends list scrolling */
+
+
+/* Achievements */
+.Achievement {
+    position: absolute;
+    gap: 30px;
+    padding: 20px;
+    left: 5%;
+    bottom: 2%;
+    height: 40%;
+    width: 20%;
+    max-width: 600px;
+}
+.Achievement .match{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 3%;
+    gap: 20px;
+}
+.icon,
+.process {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.process{
+    width: 350px;
+    height: 30px;
+}
+.icon{
+    width: 60px;
+    height: 60px;
+}
+.icon img,
+.process img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* border-radius: 50%; */
+}
+
+.block-list {
+    position: absolute;
+    gap: 30px;
+    padding: 20px;
+    right: 2%;
+    bottom: 5%;
+    background-color: rgba(8, 59, 29, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.9);
+    margin: 16px auto;
+    height: 35%;
+    overflow-y: auto;
+    width: 20%;
+    max-width: 500px;
+    scrollbar-width: thin;
+     
+}
+
+#Deblock{
+    background-color: rgba(255, 0, 0, 0.827);
+    box-shadow: 0 0 50px rgb(0 0 0);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 1% 3%;
+    font-size: 90%;
+    font-family: 'Carbo', serif;
+  }
+
+  #Deblock:hover {
+    background-color: #eb0e0e;
+}
+.button-Settings {
+    position: absolute;
+    top: 5%;
+    right: 7%;
+}
+
+.button-Game {
+    position: absolute;
+    top: 5%;
+    left: 30%;
+}
+
+.button-Chat {
+    position: absolute;
+    top: 5%;
+    right: 20%;
+}
+
+.button-Tournoi {
+    position: absolute;
+    top: 5%;
+    right: 30%;
+}
+
+.button-Home {
+    position: absolute;
+    top: 5%;
+    left: 7%;
+}
+
+button {
+    font-family: monospace;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 180%;
+    color: #ffffff;
+    text-align: center;
+    background: none;
+    border: none;
+}
+
+
+.button-Profile button {
+    position: absolute;
+    top: 5%;
+    left: 17%;
+    font-family: monospace;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 220%;
+    color: #ffffff;
+    text-align: center;
+    background: linear-gradient(135deg, #f5f5f5, #8abf82);
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.90);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.search-box1 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position : absolute;
+    bottom: 1%;
+    left: 2%;
+    margin: 15px;
+}
+
+.search-box1 .input-wrapper1 {
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search-box1 input {
+    font-family: monospace;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    width: 70%;
+    box-shadow: 0 2px 4px rgba(187, 161, 161, 0.1);
+}
+
+.search-box1 .material-icons1 {
+    width: 8%;
+    margin-right: 3%;
+}
+
+input {
+    border: none;
+    border-radius: 20px;
+    width: 60%;
+    color: hsl(122, 100%, 16%);
+}
+
+input::placeholder {
+    color: rgba(50, 52, 50, 0.612);
+    font-weight: 300;
+    margin-left: 20px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.search-results {
+    position: absolute;
+    bottom: 8%;
+    left: 5%;
+    width: 15.7%;
+    max-height: 200px;
+    overflow-y: auto;
+    background: #3e7735ad;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+}
+
+.search-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.search-item:hover {
+    background-color: #f0f0f0;
+}

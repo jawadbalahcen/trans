@@ -1,0 +1,94 @@
+version: '3.8'
+
+services:
+
+  web:
+    build: ./app
+    volumes:
+      - ./app/pingpong:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy  # This ensures db is really ready
+    environment:
+      - DATABASE_URL=postgres://smbarki:saadmbarki@db:5432/sabdark
+      #blockchain
+      - CONTRACT_ADDRESS=0x5FbDB2315678afecb367f032d93F642f64180aa3  # Default Hardhat address
+      - WEB3_PROVIDER_URI=http://blockchain:8545
+
+
+  db:
+    container_name: db
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=sabdark
+      - POSTGRES_USER=smbarki
+      - POSTGRES_PASSWORD=saadmbarki
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      - ./app/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U smbarki -d sabdark"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # logstash:
+  #   image: logstash:7.17.13
+  #   volumes:
+  #     - ./elk/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+  #   ports:
+  #     - "5044:5044"
+  #   depends_on:
+  #     - elasticsearch
+
+  # elasticsearch:
+  #   image: elasticsearch:7.17.13
+  #   environment:
+  #     - discovery.type=single-node
+  #   ports:
+  #     - "9200:9200"
+
+  # kibana:
+  #   image: kibana:7.17.13
+  #   ports:
+  #     - "5601:5601"
+  #   environment:
+  #     - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+  #   depends_on:
+  #     - elasticsearch
+
+  nginx:
+    build: './nginx'
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/nginx.conf
+      - ./app/frontend/Front-Files:/usr/share/nginx/html
+    depends_on:
+      - web
+
+  # redis:
+  #   image: "redis:latest"
+  #   ports:
+  #     - "6380:6379"  # Expose Redis on port 6380 on your local machine  
+# blockchain ---------------------------------
+  blockchain:
+    container_name: blockchain
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - ./blockchain:/app
+      - ./app/pingpong/pingpong/blockchain/artifacts:/app/artifacts # Shared volume with Django
+    ports:
+      - "8545:8545"  # Local blockchain RPC
+      - "3000:3000"  # Frontend (optional)
+    command: sh -c "npm install -g hardhat && tail -f /dev/null"
+    environment:
+      - ETH_NETWORK=hardhat
+    networks:
+      - default
+# ------------------------------------------------------------------------------
+volumes:
+  postgres_data:
